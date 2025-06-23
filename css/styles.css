@@ -11201,3 +11201,44 @@ body {
 .footer {
   padding: 5rem 0;
 }
+
+/* Existing styles remain here */
+
+/* === DARK MODE === */
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+.dark-mode .navbar,
+.dark-mode .card,
+.dark-mode .footer {
+  background-color: #1f1f1f !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .nav-link,
+.dark-mode a {
+  color: #a7c7ff !important;
+}
+
+.dark-mode .btn-primary {
+  background-color: #2c2c2c;
+  border-color: #4a4a4a;
+}
+
+.dark-mode .btn-outline-primary {
+  border-color: #a7c7ff;
+  color: #a7c7ff;
+}
+
+.dark-mode .btn-outline-primary:hover {
+  background-color: #a7c7ff;
+  color: #1f1f1f;
+}
+
+.dark-mode .project-text,
+.dark-mode .text-white,
+.dark-mode .text-white-50 {
+  color: #f5f5f5 !important;
+}
