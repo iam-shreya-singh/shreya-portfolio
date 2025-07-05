@@ -11243,33 +11243,22 @@ body.dark-mode {
   color: #f5f5f5 !important;
 }
 
-/* for Skills-section in dark mode */
-.dark-mode .skills-section {
-  background-color: #1f1f1f;
-  color: #f8f9fa;
-}
-
-.dark-mode .skills-section h5,
-.dark-mode .skills-section h2,
-.dark-mode .skills-section .section-subtitle {
-  color: #ffffff;
-}
-
+/* === Skills Section Dark Mode Fix === */
 body.dark-mode .skills-section {
   background-color: #121212;
-  color: #f8f9fa;
+  color: #f5f5f5;
 }
 
-.skill-badge {
-  background-color: #6c757d; /* fallback badge color */
+body.dark-mode .skills-section .section-heading {
   color: #ffffff;
-  font-weight: 500;
-  padding: 0.6em 0.9em;
-  font-size: 0.9rem;
-  border-radius: 20px;
-  transition: transform 0.2s ease;
 }
 
-.skill-badge:hover {
-  transform: scale(1.05);
+body.dark-mode .skills-section .section-subtitle {
+  color: #bbbbbb;
+}
+
+body.dark-mode .skill-badge {
+  background-color: #2c2c2c;
+  color: #f5f5f5;
+  border: 1px solid #444;
 }
