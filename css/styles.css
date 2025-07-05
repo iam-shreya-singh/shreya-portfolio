@@ -11285,3 +11285,23 @@ body.dark-mode .skill-badge {
   color: #f5f5f5;
   border: 1px solid #444;
 }
+
+/* === Hover Animation for Badges === */
+.skill-badge {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-badge:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* === Custom Cursor === */
+body {
+  cursor: url('https://cdn.jsdelivr.net/gh/curzr/cursor-pointer@1.0.0/pointer.cur'), auto;
+}
+
+.skill-badge:hover {
+  cursor: url('https://cdn.jsdelivr.net/gh/curzr/cursor-click@1.0.0/click.cur'), pointer;
+}
