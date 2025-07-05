@@ -352,6 +352,12 @@ button:focus:not(:focus-visible) {
   outline: 0;
 }
 
+
+.masthead .container {
+  position: relative;
+  z-index: 2; /* Keep hero text/buttons above particles */
+}
+
 input,
 button,
 select,
@@ -7213,6 +7219,39 @@ textarea.form-control-lg {
   position: sticky !important;
 }
 
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Behind the hero content */
+}
+
+/* === Shooting Stars Effect === */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(45deg, #ffffff, transparent);
+  opacity: 0;
+  pointer-events: none;
+  animation: shootingStar 2s ease-in-out infinite;
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(800px, 800px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+
 .top-0 {
   top: 0 !important;
 }
@@ -11069,32 +11108,43 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/bg-masthead.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  overflow: hidden; /* for particles later */
 }
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .masthead h1, .masthead .h1 {
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
-  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  background: linear-gradient(90deg, #ffffff, #00f7ff, #ffffff);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(0, 247, 255, 0.7);
 }
+
 .masthead h2, .masthead .h2 {
   max-width: 20rem;
   font-size: 1rem;
+  color: #e0f7fa; /* Slightly cosmic blue subtitle */
 }
+
 @media (min-width: 768px) {
   .masthead h1, .masthead .h1 {
     font-size: 4rem;
     line-height: 4rem;
   }
 }
+
 @media (min-width: 992px) {
   .masthead {
     height: 100vh;
