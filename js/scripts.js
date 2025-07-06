@@ -41,5 +41,24 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
+ // Project hover effect to change background in proj section
+    const projectCards = document.querySelectorAll('.project-card');
+    const projectsSection = document.querySelector('#projects');
+
+    projectCards.forEach((card, index) => {
+        card.addEventListener('mouseenter', () => {
+            if (index === 0) {
+                projectsSection.style.background = "linear-gradient(135deg, #00b4db, #0083b0)";
+            } else if (index === 1) {
+                projectsSection.style.background = "linear-gradient(135deg, #fc466b, #3f5efb)";
+            } else if (index === 2) {
+                projectsSection.style.background = "linear-gradient(135deg, #11998e, #38ef7d)";
+            }
+        });
+        card.addEventListener('mouseleave', () => {
+            projectsSection.style.background =
+                "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('/assets/img/hiker.jpg') center/cover no-repeat";
+        });
+    });
 
 });
