@@ -11119,30 +11119,8 @@ body {
   margin-bottom: 5rem;
 }
 
+/* === Projects Section === */
 .projects-section {
-  padding: 10rem 0;
-}
-.projects-section .featured-text {
-  padding: 2rem;
-}
-@media (min-width: 992px) {
-  .projects-section .featured-text {
-    padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #64a19d;
-  }
-}
-.projects-section .project-text {
-  padding: 3rem;
-  font-size: 90%;
-}
-@media (min-width: 992px) {
-  .projects-section .project-text {
-    padding: 5rem;
-  }
-}
-
-/* Projects section with hiker mountain background */
- .projects-section {
   position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
               url("/assets/img/hiker.jpg") center/cover no-repeat;
@@ -11150,17 +11128,88 @@ body {
   color: #f0f0f0;
 }
 
+/* Optional overlay for darker effect */
 #projects::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3); /* Optional overlay to mute the image slightly */
+  background: rgba(0, 0, 0, 0.3);
   z-index: 0;
 }
 
 #projects .container {
   position: relative;
-  z-index: 2; /* keeps project cards above the bg */
+  z-index: 2; /* Keeps cards above the background */
+}
+
+/* Grid layout for projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Project Cards with Glassmorphism */
+.project-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+.project-card h3 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: #dddddd;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.badge {
+  display: inline-block;
+  background: #ffffff20;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  margin: 5px 5px 10px 0;
+  font-size: 0.8rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #00bfa6;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #00a394;
+}
+
+/* Responsive tweaks for larger screens */
+@media (min-width: 992px) {
+  .projects-section {
+    padding: 10rem 0;
+  }
+  .projects-section .project-card {
+    padding: 2rem;
+  }
 }
 
 .signup-section {
