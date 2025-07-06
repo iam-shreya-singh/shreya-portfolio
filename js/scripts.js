@@ -1,17 +1,15 @@
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
-    var navbarShrink = function () {
+    const navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
-        }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink')
-        }
+        if (!navbarCollapsible) return;
 
+        if (window.scrollY === 0) {
+            navbarCollapsible.classList.remove('navbar-shrink');
+        } else {
+            navbarCollapsible.classList.add('navbar-shrink');
+        }
     };
 
     // Shrink the navbar 
@@ -27,7 +25,7 @@ window.addEventListener('DOMContentLoaded', event => {
             target: '#mainNav',
             rootMargin: '0px 0px -40%',
         });
-    };
+    }
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
@@ -41,7 +39,8 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
- // Project hover effect to change background in proj section
+
+    // ===== Project hover effect =====
     const projectCards = document.querySelectorAll('.project-card');
     const projectsSection = document.querySelector('#projects');
 
@@ -59,31 +58,32 @@ window.addEventListener('DOMContentLoaded', event => {
             projectsSection.style.background =
                 "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('/assets/img/hiker.jpg') center/cover no-repeat";
         });
-
-
-        // ===== Custom Cursor =====
-const cursor = document.createElement('div');
-cursor.id = 'cursor';
-document.body.appendChild(cursor);
-
-document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
-
-// Make cursor interactive
-const interactiveElements = document.querySelectorAll('a, button, .project-card');
-interactiveElements.forEach(el => {
-    el.classList.add('magnetic'); // Add magnetic class
-    el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(2)';
-        cursor.style.background = 'rgba(0, 191, 166, 0.3)';
-        cursor.style.borderColor = '#00bfa6';
     });
-    el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        cursor.style.background = 'rgba(255, 255, 255, 0.6)';
-        cursor.style.borderColor = '#00bfa6';
+
+    // ===== Custom Cursor =====
+    const cursor = document.createElement('div');
+    cursor.id = 'cursor';
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Magnetic Hover Scaling
+    const interactiveElements = document.querySelectorAll('a, button, .project-card');
+    interactiveElements.forEach(el => {
+        el.classList.add('magnetic');
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+            cursor.style.background = 'rgba(0, 191, 166, 0.3)';
+            cursor.style.borderColor = '#00bfa6';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursor.style.background = 'rgba(255, 255, 255, 0.6)';
+            cursor.style.borderColor = '#00bfa6';
+        });
     });
 
 });
