@@ -11141,6 +11141,30 @@ body {
   }
 }
 
+/* Projects section with hiker mountain background */
+#projects {
+  position: relative;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), #121212),
+              url("assets/img/hiker.jpg") center center / cover no-repeat;
+  background-blend-mode: overlay;
+  color: #f8f9fa;
+  padding: 4rem 0;
+  z-index: 1;
+}
+
+#projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* Optional overlay to mute the image slightly */
+  z-index: 0;
+}
+
+#projects .container {
+  position: relative;
+  z-index: 2; /* keeps project cards above the bg */
+}
+
 .signup-section {
   padding: 10rem 0;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../assets/img/bg-signup.jpg");
