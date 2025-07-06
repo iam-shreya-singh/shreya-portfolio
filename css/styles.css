@@ -11178,6 +11178,19 @@ body {
   line-height: 1.4;
 }
 
+/* Background gradient changes based on hovered project */
+.project-card:nth-child(1):hover ~ #projects {
+  background: linear-gradient(135deg, #00b4db, #0083b0);
+}
+
+.project-card:nth-child(2):hover ~ #projects {
+  background: linear-gradient(135deg, #fc466b, #3f5efb);
+}
+
+.project-card:nth-child(3):hover ~ #projects {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
 .badge {
   display: inline-block;
   background: #ffffff20;
