@@ -10,6 +10,7 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
   </head>
   <body id="page-top">
@@ -20,22 +21,23 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
           Menu <i class="fas fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto align-items-center">
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="assets/Resume_Shreya_Singh_SDE.pdf" target="_blank">Resume</a>
-            </li>
-            <li class="nav-item">
-              <button id="darkModeToggle" class="btn btn-sm btn-outline-primary ms-2">
-                <i class="fas fa-moon"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
+   <ul class="navbar-nav ms-auto align-items-center">
+  <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+  <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+<li class="nav-item">
+  <a class="nav-link" href="#skills">Skills</a>
+</li>
+  <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+  <li class="nav-item">
+    <a class="nav-link" href="assets/Resume_Shreya_Singh_SDE.pdf" target="_blank">Resume</a>
+  </li>
+  <li class="nav-item">
+    <button id="darkModeToggle" class="btn btn-sm btn-outline-primary ms-2">
+      <i class="fas fa-moon"></i>
+    </button>
+  </li>
+</ul>
+      </div>
       </div>
     </nav>
 
@@ -44,11 +46,10 @@
       <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="text-center">
           <h1 class="mx-auto my-0 text-uppercase">Shreya Singh</h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-5">
-            Software Developer | Build. Debug. Rethink. Evolve.
-          </h2>
+          <h2 class="text-white-50 mx-auto mt-2 mb-5">Software Developer | Build. Debug. Rethink. Evolve.
+</h2>
           <a class="btn btn-primary" href="#projects">View My Work</a>
-          <a class="btn btn-outline-light mt-3" href="assets/Resume_Shreya_Singh_SDE.pdf" target="_blank">Download Resume</a>
+<a class="btn btn-outline-light mt-3" href="assets/Shreya_Singh_SDE_Resume.pdf" target="_blank">Download Resume</a>
         </div>
       </div>
     </header>
@@ -60,37 +61,82 @@
           <div class="col-lg-8">
             <h2 class="text-white mb-4">About Me</h2>
             <p class="text-white-50">
-              Hi! I’m Shreya, a software developer, learning by doing.  
-              I love designing systems, fixing bugs that make me think twice, and building tech that feels thoughtful and human.  
-              This space is where I build, break, learn, and grow — in public.
-            </p>
-          </div>
+Hi! I’m Shreya, a software developer, learning by doing.
+I love designing systems, fixing bugs that make me think twice, and building tech that feels thoughtful and human.
+My projects are in progress — sometimes messy, sometimes neat — but always a reflection of what I’m exploring.
+This space is where I build, break, learn, and grow — in public. </p>    </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="bg-light py-5" id="skills">
-      <div class="container px-4 px-lg-5 text-center">
-        <h2 class="text-uppercase mb-4">Skills</h2>
-        <p class="text-muted mb-4">Here are the tools, frameworks, and services I use most:</p>
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col-md-10">
-            <div class="mb-3">
-              <h5 class="text-dark">Frontend</h5>
-              <span class="badge bg-primary m-1">React.js</span>
-              <span class="badge bg-primary m-1">JavaScript (ES6+)</span>
-              <span class="badge bg-primary m-1">HTML5</span>
-              <span class="badge bg-primary m-1">CSS3</span>
-              <span class="badge bg-primary m-1">Next.js</span>
+    <!--Skills Section-->
+    <section class="skills-section py-5" id="skills">
+  <div class="container px-4 px-lg-5 text-center">
+    <h2 class="text-uppercase mb-4">Skills</h2>
+    <p class="section-subtitle">Here are the tools, frameworks, and services I use most:</p>
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10">
+        <div class="mb-3" data-aos="fade-up" data-aos-delay="100">
+          <h5 class="section-heading">Frontend</h5>
+          <span class="badge skill-badge m-1"><i class="fab fa-react me-1"></i> React.js</span>
+          <span class="badge skill-badge m-1"><i class="fab fa-js-square me-1"></i> JavaScript (ES6+)</span>
+          <span class="badge skill-badge m-1"><i class="fab fa-html5 me-1"></i> HTML5</span>
+          <span class="badge skill-badge m-1"><i class="fab fa-css3-alt me-1"></i> CSS3</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-code me-1"></i> TypeScript</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-layer-group me-1"></i> Next.js</span>
+        </div>
+
+        <div class="mb-3" data-aos="fade-up" data-aos-delay="200">
+          <h5 class="section-heading">Backend</h5>
+          <span class="badge skill-badge m-1"><i class="fab fa-node-js me-1"></i> Node.js</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-server me-1"></i> Express.js</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-code-branch me-1"></i> Django REST</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-database me-1"></i> PostgreSQL</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-database me-1"></i> MongoDB</span>
+        </div>
+
+        <div class="mb-3" data-aos="fade-up" data-aos-delay="300">
+          <h5 class="section-heading">Dev Tools & Infra</h5>
+          <span class="badge skill-badge m-1"><i class="fab fa-aws me-1"></i> AWS EC2</span>
+          <span class="badge skill-badge m-1"><i class="fab fa-docker me-1"></i> Docker</span>
+          <span class="badge skill-badge m-1"><i class="fab fa-git-alt me-1"></i> Git</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-paper-plane me-1"></i> Postman</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-rocket me-1"></i> Render</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-rocket me-1"></i> Vercel</span>
+        </div>
+
+        <div class="mb-3" data-aos="fade-up" data-aos-delay="400">
+          <h5 class="section-heading">Other</h5>
+          <span class="badge skill-badge m-1"><i class="fas fa-key me-1"></i> JWT Auth</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-bolt me-1"></i> Zustand</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-brain me-1"></i> DSA</span>
+          <span class="badge skill-badge m-1"><i class="fas fa-sitemap me-1"></i> System Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Projects Section -->
+    <section class="projects-section bg-light" id="projects">
+      <div class="container px-4 px-lg-5">
+        <div class="row gx-0 mb-5">
+          <div class="col-lg-6"><img class="img-fluid" src="assets/img/project1.jpg" alt="Audio Room App" /></div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="bg-black text-white p-4">
+              <h4>Audio Room App</h4>
+              <p>Real-time audio rooms using React, Node.js, Stream API, and WebSockets. AWS-hosted with robust retry logic and performance monitoring.</p>
+              <a class="btn btn-outline-light btn-sm" href="https://github.com/iam-shreya-singh/Audio-Room-App">GitHub</a>
             </div>
-            <div class="mb-3">
-              <h5 class="text-dark">Backend</h5>
-              <span class="badge bg-success m-1">Node.js</span>
-              <span class="badge bg-success m-1">Express.js</span>
-              <span class="badge bg-success m-1">Django REST</span>
-              <span class="badge bg-success m-1">PostgreSQL</span>
-              <span class="badge bg-success m-1">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="row gx-0 mb-5">
+          <div class="col-lg-6 order-lg-2"><img class="img-fluid" src="assets/img/project2.jpg" alt="Budget Tracker" /></div>
+          <div class="col-lg-6 d-flex align-items-center order-lg-1">
+            <div class="bg-black text-white p-4">
+              <h4>Personal Budget Tracker</h4>
+              <p>Django REST + React.js app to visualize income vs expense, with Zustand state management and PostgreSQL. Deployed on Render & Vercel.</p>
+              <a class="btn btn-outline-light btn-sm" href="https://github.com/iam-shreya-singh/Personal-Budget-Tracker">GitHub</a>
             </div>
           </div>
         </div>
@@ -141,10 +187,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
     <script>
-      const toggle = document.getElementById("darkModeToggle");
-      toggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-      });
-    </script>
+  const toggle = document.getElementById("darkModeToggle");
+
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+</script
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
   </body>
 </html>
