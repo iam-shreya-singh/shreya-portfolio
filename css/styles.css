@@ -11315,3 +11315,40 @@ body.dark-mode .skill-badge:hover {
   animation: pulse 0.8s ease-in-out;
   box-shadow: 0 0 15px rgba(13, 110, 253, 0.8);
 }
+/* === Glass Card Styles for glassmorphism tiles=== */
+.glass-card {
+  position: relative;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.glass-card-content {
+  padding: 1rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.tech-badge {
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.2rem 0.6rem;
+  margin: 0.2rem;
+  font-size: 0.8rem;
+}
+
