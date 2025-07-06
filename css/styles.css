@@ -11290,3 +11290,28 @@ body.dark-mode .skill-badge:hover {
   transform: scale(1.08);
   box-shadow: 0 6px 12px rgba(13, 110, 253, 0.4);
 }
+
+/* === Badge Pulse Animation both in light - dark mode === */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 123, 255, 0.7);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 123, 255, 0.7);
+  }
+}
+
+.skill-badge:hover {
+  animation: pulse 0.8s ease-in-out;
+}
+
+body.dark-mode .skill-badge:hover {
+  animation: pulse 0.8s ease-in-out;
+  box-shadow: 0 0 15px rgba(13, 110, 253, 0.8);
+}
