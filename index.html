@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shreya Singh | Software Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Enhancement : GSAP Library implemnted -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Enhancement: Typed in hero section -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
     <!-- ENHANCEMENT 3: Google Font Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,6 +92,15 @@
     .project-card { transform: translateY(0); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .project-card:hover { transform: translateY(-10px); }
     .project-card:hover .project-overlay { opacity: 1; }
+
+    /*GSAP CSS for the Tech Stack Exploder */
+   .tech-icon {
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+    pointer-events: none; /* Prevents interaction when hidden */
+    transition: color 0.3s ease;}  /* For dark mode color change */
+
+    .dark .tech-icon {color: #818cf8;} /* Lighter purple for dark mode */
 
     /* Animated Background */
     .animated-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%); z-index: -1; animation: pulse-glow 4s infinite alternate; }
@@ -179,7 +192,7 @@
         <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center z-10">
             <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
                 <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 glow-text">Hi, I'm <span class="text-yellow-300">Shreya Singh</span></h1>
-                <h2 class="text-2xl md:text-3xl text-gray-100 mb-8">Software Developer</h2>
+                <h2 class="text-2xl md:text-3xl text-gray-100 mb-8">I am a <span id="typed-text" class="text-yellow-300 font-semibold"></span></h2>         
                 <p class="text-lg text-gray-200 mb-10 max-w-lg">I build exceptional digital experiences with clean, efficient code. Passionate about creating solutions that make a difference.</p>
                 <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
                     <a href="#projects" class="bg-white text-primary font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition shadow-lg glow-border">View My Work</a>
@@ -294,13 +307,60 @@
 
     <!-- Projects Section -->
     <section id="projects" class="py-20 bg-white theme-transition">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Projects</h2><div class="w-24 h-1 bg-primary mx-auto"></div><p class="text-gray-600 mt-4 max-w-2xl mx-auto">Here are some of my recent projects that showcase my skills.</p></div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="100"><div class="relative"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Audio Room App" class="w-full h-56 object-cover"><div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 project-overlay transition-opacity duration-300"><a href="https://github.com/iam-shreya-singh/Audio-Room-App" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a></div></div><div class="p-6"><h3 class="text-xl font-bold mb-2 glow-text">Audio Room App</h3><p class="text-gray-600 mb-4">Real-time audio rooms using React, Node.js, Stream API, and WebSockets.</p><div class="flex flex-wrap gap-2"><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">React.js</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Node.js</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">MongoDB</span></div></div></div>
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="200"><div class="relative"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Personal Budget Tracker" class="w-full h-56 object-cover"><div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 project-overlay transition-opacity duration-300"><a href="https://github.com/iam-shreya-singh/Personal-Budget-Tracker" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a></div></div><div class="p-6"><h3 class="text-xl font-bold mb-2 glow-text">Personal Budget Tracker</h3><p class="text-gray-600 mb-4">Django REST + React.js app to visualize income vs expense.</p><div class="flex flex-wrap gap-2"><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Django REST</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">React.js</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Zustand</span></div></div></div>
+       <!-- Replace the existing project grid with this new one -->
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+    
+    <!-- Project 1: Audio Room App -->
+        <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="100">
+        <div class="relative">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Audio Room App" class="w-full h-56 object-cover">
+            <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 project-overlay transition-opacity duration-300">
+                <a href="https://github.com/iam-shreya-singh/Audio-Room-App" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a>
             </div>
         </div>
+        <div class="p-6 relative"> <!-- Added relative positioning -->
+            <h3 class="text-xl font-bold mb-2 glow-text">Audio Room App</h3>
+            <p class="text-gray-600 mb-4">Real-time audio rooms using React, Node.js, Stream API, and WebSockets.</p>
+            
+            <!-- Tech Stack Icons (Initially Hidden) -->
+                <div class="tech-stack-icons absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center space-x-2 z-10">                <i class="fab fa-react text-2xl text-primary tech-icon" title="React.js"></i>
+                <i class="fab fa-node-js text-2xl text-primary tech-icon" title="Node.js"></i>
+                <i class="fas fa-database text-2xl text-primary tech-icon" title="MongoDB"></i>
+                <!-- Tech Stack Icons (UPDATED with Stream SVG) -->
+              <div class="tech-stack-icons absolute bottom-6 right-6 flex items-center space-x-4">
+                <i class="fas fa-bolt-lightning text-2xl text-primary tech-icon" title="Vite"></i>
+                <i class="fab fa-react text-2xl text-primary tech-icon" title="React.js"></i>
+                <i class="fab fa-node-js text-2xl text-primary tech-icon" title="Node.js"></i>
+                <!-- Stream API Logo (SVG) -->
+                <svg class="w-6 h-6 tech-icon text-primary" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" title="Stream API">
+                <path d="M11.979 3.292L1.833 9.474l3.141.001-.004 5.051 7.01-4.148V5.326l-3.328 1.957.003-2.11L11.979 3.292zm.04 8.243l-7.009 4.148L1.87 15.68l10.149 6.029 10.154-6.03-.004.002-3.145-.002.002-5.05-7.007 4.146zm7.009-4.148l.004-5.05-3.14-.001.002 2.11-3.33-1.958v5.052l7.007-4.148z"/>
+                </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Project 2: Personal Budget Tracker -->
+    <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="200">
+        <div class="relative">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Personal Budget Tracker" class="w-full h-56 object-cover">
+            <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 project-overlay transition-opacity duration-300">
+                <a href="https://github.com/iam-shreya-singh/Personal-Budget-Tracker" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a>
+            </div>
+        </div>
+        <div class="p-6 relative"> <!-- Added relative positioning -->
+            <h3 class="text-xl font-bold mb-2 glow-text">Personal Budget Tracker</h3>
+            <p class="text-gray-600 mb-4">Django REST + React.js app to visualize income vs expense.</p>
+            
+            <!-- Tech Stack Icons (Initially Hidden) -->
+            <div class="tech-stack-icons absolute bottom-6 right-6 flex items-center space-x-4">
+                <i class="fas fa-server text-2xl text-primary tech-icon" title="Django REST"></i>
+                <i class="fab fa-react text-2xl text-primary tech-icon" title="React.js"></i>
+                <i class="fas fa-atom text-2xl text-primary tech-icon" title="Zustand"></i>
+            </div>
+        </div>
+    </div>
+</div>
     </section>
 
     <!-- Contact Section / form section -->
@@ -347,7 +407,7 @@
         <div class="animated-bg"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-center"><div class="mb-6 md:mb-0"><a href="#" class="text-2xl font-bold glow-text">Shreya<span class="text-primary">.</span></a><p class="mt-2 text-gray-400">Creating digital experiences that matter</p></div><div class="flex flex-wrap justify-center gap-4"><a href="#home" class="hover:text-primary transition glow-text">Home</a><a href="#about" class="hover:text-primary transition glow-text">About</a><a href="#projects" class="hover:text-primary transition glow-text">Projects</a><a href="#contact" class="hover:text-primary transition glow-text">Contact</a></div></div>
-            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"><p class="text-gray-400">© 2024 Shreya Singh. All rights reserved.</p><div class="flex space-x-4 mt-4 md:mt-0"><a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-linkedin-in"></i></a><a href="https://github.com/iam-shreya-singh" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-github"></i></a></div></div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"><p class="text-gray-400">© 2025 Shreya Singh. All rights reserved.</p><div class="flex space-x-4 mt-4 md:mt-0"><a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-linkedin-in"></i></a><a href="https://github.com/iam-shreya-singh" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-github"></i></a></div></div>
         </div>
     </footer>
 
@@ -468,5 +528,55 @@ async function getGitHubStats() {
 
 // Call the function on page load
 getGitHubStats();
+
+// --- PROJECT CARD TECH STACK EXPLODER ---
+document.querySelectorAll('.project-card').forEach(card => {
+    const icons = card.querySelectorAll('.tech-icon');
+    
+    // Create a GSAP timeline, but keep it paused
+    const timeline = gsap.timeline({ paused: true });
+
+       // The NEW, IMPROVED GSAP timeline
+timeline.to(icons, {
+    opacity: 1,
+    scale: 1.1, // Makes icons slightly larger
+    x: (index) => (index - (icons.length - 1) / 2) * 45, // A clean 45px spread
+    y: -65, // Moves icons up higher
+    rotate: (index) => (index - (icons.length - 1) / 2) * 20, // A more pronounced fan
+    stagger: 0.08, // A slightly quicker stagger
+    ease: 'back.out(2)', // A slightly bouncier ease
+    duration: 0.6, // A slightly longer, more visible duration
+    pointerEvents: 'auto'
+});
+    card.addEventListener('mouseenter', () => {
+        timeline.play();
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        timeline.reverse();
+    });
+});    
+// --- TYPED.JS ROLODEX EFFECT for Head keep on changing tags---
+       document.addEventListener('DOMContentLoaded', function() {
+        var options = {
+        strings: [
+            'Software Developer.',
+            'Full-Stack Engineer.',
+            'Problem Solver.',
+            'Creative Coder.',
+            'Proactive Learner.',
+            'Collaborative Team Player.',
+        ],
+        typeSpeed: 50,  // Speed of typing
+        backSpeed: 30,  // Speed of deleting
+        backDelay: 2000, // Pause before deleting
+        startDelay: 500, // Pause before starting
+        loop: true,     // Loop forever
+        showCursor: true,
+        cursorChar: '|',
+        autoInsertCss: true // Let the library handle the cursor CSS
+    };
+    var typed = new Typed('#typed-text', options);
+});
 </script>
 </html>
