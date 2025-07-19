@@ -8,21 +8,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         primary: '#6366f1',
                         secondary: '#4f46e5',
                         dark: '#1e293b',
-                        light: '#f8fafc'
+                        light: '#f8fafc',
+                        accent: '#f59e0b',
+                        neon: '#0ea5e9'
                     },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s infinite',
+                        'glow': 'glow 1.5s ease-in-out infinite alternate',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 0.5; },
+                            '50%': { opacity: 1; }
+                        },
+                        'glow': {
+                            '0%': { 
+                                boxShadow: '0 0 5px rgba(99, 102, 241, 0.5)',
+                                textShadow: '0 0 5px rgba(99, 102, 241, 0.5)'
+                            },
+                            '100%': { 
+                                boxShadow: '0 0 20px rgba(99, 102, 241, 0.8), 0 0 30px rgba(99, 102, 241, 0.6)',
+                                textShadow: '0 0 20px rgba(99, 102, 241, 0.8), 0 0 30px rgba(99, 102, 241, 0.6)'
+                            }
                         }
                     }
                 }
@@ -30,30 +49,192 @@
         }
     </script>
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        /* Glow Effects */
+        .glow-text {
+            transition: text-shadow 0.3s ease, color 0.3s ease;
         }
-        .project-card:hover .project-overlay {
-            opacity: 1;
+        
+        .glow-text:hover {
+            text-shadow: 0 0 15px rgba(99, 102, 241, 0.8), 0 0 25px rgba(99, 102, 241, 0.6);
         }
+        
+        .glow-border {
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .glow-border:hover {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.6),
+                        0 0 30px rgba(99, 102, 241, 0.4);
+        }
+        
+        /* Enhanced Hover Effects */
+        .project-card {
+            transform: translateY(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            animation: pulse-glow 4s infinite alternate;
+        }
+        
+        /* Interactive Skill Bars */
+        .skill-bar {
+            position: relative;
+            height: 10px;
+            border-radius: 5px;
+            background: #e2e8f0;
+            overflow: hidden;
+        }
+        
         .skill-progress {
-            transition: width 1s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradi            <nav class="fixed w-full bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-md z-50 theme-transition" id="navbar">ent(90deg, #6366f1, #4f46e5);
+            transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            width: 0;
+        }
+        
+        .skill-bar:hover .skill-progress {
+            width: var(--progress);
+        }
+        
+        /* Floating Elements */
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Contact Form Animation */
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: scale(1.02);
+        }
+        
+        /* Theme Transition */
+        .theme-transition {
+            transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .dark .theme-toggle {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark .theme-toggle:hover {
+            background: rgba(30, 41, 59, 0.9);
+        }
+        
+        /* Dark Mode Specific Styles */
+        .dark .skill-bar {
+            background: #4b5563;
+        }
+        
+        .dark .skill-progress {
+            background: linear-gradient(90deg, #818cf8, #6366f1);
+        }
+        
+        /* Neon Effects for Dark Mode */
+        .dark .neon-text {
+            text-shadow: 0 0 5px #0ea5e9;
+        }
+        
+        .dark .neon-border {
+            box-shadow: 0 0 5px #0ea5e9;
+        }
+        
+        /* Card Enhancements */
+        .card-enhanced {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .card-enhanced:hover::before {
+            left: 100%;
+        }
+        
+        /* Animated Counter */
+        .counter {
+            display: inline-block;
+        }
+        
+        .counter-value {
+            display: inline-block;
+            transition: all 0.5s ease;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans theme-transition" id="app">
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle glow-border" id="themeToggle">
+        <i class="fas fa-sun text-white text-xl" id="themeIcon"></i>
+    </div>
+
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-md z-50">
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-md z-50 theme-transition" id="navbar">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-primary">Shreya<span class="text-secondary">.</span></a>
+            <a href="#" class="text-2xl font-bold text-primary glow-text">Shreya<span class="text-secondary">.</span></a>
             
             <div class="hidden md:flex space-x-8">
-                <a href="#home" class="hover:text-primary transition">Home</a>
-                <a href="#about" class="hover:text-primary transition">About</a>
-                <a href="#skills" class="hover:text-primary transition">Skills</a>
-                <a href="#experience" class="hover:text-primary transition">Experience</a>
-                <a href="#projects" class="hover:text-primary transition">Projects</a>
-                <a href="#contact" class="hover:text-primary transition">Contact</a>
+                <a href="#home" class="hover:text-primary transition glow-text">Home</a>
+                <a href="#about" class="hover:text-primary transition glow-text">About</a>
+                <a href="#skills" class="hover:text-primary transition glow-text">Skills</a>
+                <a href="#experience" class="hover:text-primary transition glow-text">Experience</a>
+                <a href="#projects" class="hover:text-primary transition glow-text">Projects</a>
+                <a href="#contact" class="hover:text-primary transition glow-text">Contact</a>
             </div>
             
             <button class="md:hidden focus:outline-none">
@@ -63,10 +244,11 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="gradient-bg min-h-screen flex items-center pt-20">
-        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+    <section id="home" class="gradient-bg min-h-screen flex items-center pt-20 relative theme-transition">
+        <div class="animated-bg"></div>
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center z-10">
             <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 glow-text">
                     Hi, I'm <span class="text-yellow-300">Shreya Singh</span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl text-gray-100 mb-8">Software Developer</h2>
@@ -74,27 +256,33 @@
                     I build exceptional digital experiences with clean, efficient code. Passionate about creating solutions that make a difference.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#projects" class="bg-white text-primary font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition shadow-lg">
+                    <a href="#projects" class="bg-white text-primary font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition shadow-lg glow-border">
                         View My Work
                     </a>
-                    <a href="#contact" class="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-primary transition">
+                    <a href="#contact" class="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-primary transition glow-border">
                         Contact Me
                     </a>
                 </div>
             </div>
+            
             <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
                 <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
                      alt="Shreya Singh" 
                      class="rounded-full w-64 h-64 object-cover border-4 border-white shadow-xl animate-float">
+                    <div class="absolute -bottom-3 -right-3 bg-primary rounded-full p-4 shadow-lg glow-border floating-icon">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-white theme-transition">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">About Me</h2>
                 <div class="w-24 h-1 bg-primary mx-auto"></div>
             </div>
             
@@ -102,11 +290,11 @@
                 <div class="md:w-1/2 mb-10 md:mb-0">
                     <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
                          alt="About Shreya" 
-                         class="rounded-lg shadow-xl">
+                         class="rounded-lg shadow-xl glow-border">
                 </div>
                 
                 <div class="md:w-1/2 md:pl-12">
-                    <h3 class="text-2xl font-bold mb-4">Who am I?</h3>
+                    <h3 class="text-2xl font-bold mb-4 glow-text">Who am I?</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">
                         Hi! I'm Shreya, a software developer, learning by doing. I love designing systems, fixing bugs that make me think twice, and building tech that feels thoughtful and human. My projects are in progress — sometimes messy, sometimes neat — but always a reflection of what I'm exploring. This space is where I build, break, learn, and grow — in public.
                     </p>
@@ -131,13 +319,13 @@
                     </div>
                     
                     <div class="flex space-x-4">
-                        <a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-primary hover:text-secondary transition">
+                        <a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-primary hover:text-secondary transition glow-text">
                             <i class="fab fa-linkedin text-2xl"></i>
                         </a>
-                        <a href="https://github.com/iam-shreya-singh" target="_blank" class="text-primary hover:text-secondary transition">
+                        <a href="https://github.com/iam-shreya-singh" target="_blank" class="text-primary hover:text-secondary transition glow-text">
                             <i class="fab fa-github text-2xl"></i>
                         </a>
-                        <a href="#" class="text-primary hover:text-secondary transition">
+                        <a href="#" class="text-primary hover:text-secondary transition glow-text">
                             <i class="fas fa-globe text-2xl"></i>
                         </a>
                     </div>
@@ -147,20 +335,20 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-gray-50">
+    <section id="experience" class="py-20 bg-gray-50 theme-transition">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Experience</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Experience</h2>
                 <div class="w-24 h-1 bg-primary mx-auto"></div>
             </div>
             
             <div class="max-w-4xl mx-auto">
                 <!-- Experience Item 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-8 glow-border theme-transition">
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <h3 class="text-2xl font-bold">Systems Engineer</h3>
-                            <p class="text-primary font-semibold">Infosys, Hyderabad, India</p>
+                            <p class="text-primary font-semibold">Infosys, Remote, India</p>
                         </div>
                         <span class="bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full">Nov 2021 – Dec 2023</span>
                     </div>
@@ -193,10 +381,10 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-white">
+    <section id="skills" class="py-20 bg-white theme-transition">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Skills</h2>
                 <div class="w-24 h-1 bg-primary mx-auto"></div>
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
                     I've worked with a variety of technologies to build robust and scalable applications
@@ -205,15 +393,15 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
-                    <h3 class="text-xl font-bold mb-6">Frontend Development</h3>
+                    <h3 class="text-xl font-bold mb-6 glow-text">Frontend Development</h3>
                     
                     <div class="mb-6">
                         <div class="flex justify-between mb-2">
                             <span class="font-semibold">HTML/CSS</span>
                             <span>95%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="skill-progress bg-primary h-2.5 rounded-full" style="width: 95%"></div>
+                        <div class="skill-bar" style="--progress: 95%">
+                            <div class="skill-progress" data-width="95%"></div>
                         </div>
                     </div>
                     
@@ -222,8 +410,8 @@
                             <span class="font-semibold">JavaScript</span>
                             <span>90%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="skill-progress bg-primary h-2.5 rounded-full" style="width: 90%"></div>
+                        <div class="skill-bar" style="--progress: 90%">
+                            <div class="skill-progress" data-width="90%"></div>
                         </div>
                     </div>
                     
@@ -232,8 +420,8 @@
                             <span class="font-semibold">React.js</span>
                             <span>85%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="skill-progress bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                        <div class="skill-bar" style="--progress: 85%">
+                            <div class="skill-progress" data-width="85%"></div>
                         </div>
                     </div>
                     
@@ -242,22 +430,22 @@
                             <span class="font-semibold">Next.js</span>
                             <span>75%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="skill-progress bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+                        <div class="skill-bar" style="--progress: 75%">
+                            <div class="skill-progress" data-width="75%"></div>
                         </div>
                     </div>
                 </div>
                 
                 <div>
-                    <h3 class="text-xl font-bold mb-6">Backend Development</h3>
+                    <h3 class="text-xl font-bold mb-6 glow-text">Backend Development</h3>
                     
                     <div class="mb-6">
                         <div class="flex justify-between mb-2">
                             <span class="font-semibold">Node.js</span>
                             <span>85%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="skill-progress bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                        <div class="skill-bar" style="--progress: 85%">
+                            <div class="skill-progress" data-width="85%"></div>
                         </div>
                     </div>
                     
@@ -266,8 +454,8 @@
                             <span class="font-semibold">Express.js</span>
                             <span>80%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="skill-progress bg-primary h-2.5 rounded-full" style="width: 80%"></div>
+                        <div class="skill-bar" style="--progress: 80%">
+                            <div class="skill-progress" data-width="80%"></div>
                         </div>
                     </div>
                     
@@ -276,8 +464,8 @@
                             <span class="font-semibold">MongoDB</span>
                             <span>75%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="skill-progress bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+                        <div class="skill-bar" style="--progress: 75%">
+                            <div class="skill-progress" data-width="75%"></div>
                         </div>
                     </div>
                     
@@ -286,42 +474,42 @@
                             <span class="font-semibold">SQL</span>
                             <span>70%</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="skill-progress bg-primary h-2.5 rounded-full" style="width: 70%"></div>
+                        <div class="skill-bar" style="--progress: 70%">
+                            <div class="skill-progress" data-width="70%"></div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="mt-16">
-                <h3 class="text-xl font-bold mb-8 text-center">Tools & Technologies</h3>
+                <h3 class="text-xl font-bold mb-8 text-center glow-text">Tools & Technologies</h3>
                 <div class="flex flex-wrap justify-center gap-6">
                     <div class="text-center">
-                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border">
                             <i class="fab fa-git-alt text-4xl text-primary"></i>
                         </div>
                         <p>Git</p>
                     </div>
                     <div class="text-center">
-                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border">
                             <i class="fab fa-docker text-4xl text-primary"></i>
                         </div>
                         <p>Docker</p>
                     </div>
                     <div class="text-center">
-                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border">
                             <i class="fab fa-aws text-4xl text-primary"></i>
                         </div>
                         <p>AWS</p>
                     </div>
                     <div class="text-center">
-                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border">
                             <i class="fas fa-server text-4xl text-primary"></i>
                         </div>
                         <p>Postman</p>
                     </div>
                     <div class="text-center">
-                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                        <div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border">
                             <i class="fas fa-code-branch text-4xl text-primary"></i>
                         </div>
                         <p>CI/CD</p>
@@ -332,10 +520,10 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-50">
+    <section id="projects" class="py-20 bg-gray-50 theme-transition">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Projects</h2>
                 <div class="w-24 h-1 bg-primary mx-auto"></div>
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
                     Here are some of my recent projects that showcase my skills and expertise
@@ -344,7 +532,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg project-card group">
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
                              alt="Audio Room App" 
@@ -356,7 +544,7 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Audio Room App</h3>
+                        <h3 class="text-xl font-bold mb-2 glow-text">Audio Room App</h3>
                         <p class="text-gray-600 mb-4">
                             Real-time audio rooms using React, Node.js, Stream API, and WebSockets.
                         </p>
@@ -369,7 +557,7 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg project-card group">
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
                              alt="Personal Budget Tracker" 
@@ -381,7 +569,7 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Personal Budget Tracker</h3>
+                        <h3 class="text-xl font-bold mb-2 glow-text">Personal Budget Tracker</h3>
                         <p class="text-gray-600 mb-4">
                             Django REST + React.js app to visualize income vs expense.
                         </p>
@@ -395,7 +583,7 @@
             </div>
             
             <div class="text-center mt-12">
-                <a href="#" class="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-full hover:bg-secondary transition shadow-lg">
+                <a href="#" class="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-full hover:bg-secondary transition shadow-lg glow-border">
                     View All Projects
                 </a>
             </div>
@@ -403,10 +591,10 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-white theme-transition">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Get In Touch</h2>
                 <div class="w-24 h-1 bg-primary mx-auto"></div>
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
                     Have a project in mind or want to collaborate? Feel free to reach out!
@@ -419,29 +607,38 @@
                     <form class="space-y-6 bg-gray-50 p-8 rounded-xl shadow-lg">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                            <input type="text" name="name" id="name" autocomplete="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Your Name">
+                            <input type="text" name="name" id="name" autocomplete="name" 
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm focus:ring-2 focus:ring-opacity-20 transition-all duration-300 form-input glow-border" 
+                                   placeholder="Your Name">
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" name="email" id="email" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Your Email">
+                            <input type="email" name="email" id="email" autocomplete="email" 
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm focus:ring-2 focus:ring-opacity-20 transition-all duration-300 form-input glow-border" 
+                                   placeholder="Your Email">
                         </div>
                         <div>
                             <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
-                            <input type="text" name="subject" id="subject" autocomplete="off" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Subject">
+                            <input type="text" name="subject" id="subject" autocomplete="off" 
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm focus:ring-2 focus:ring-opacity-20 transition-all duration-300 form-input glow-border" 
+                                   placeholder="Subject">
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Your Message"></textarea>
+                            <textarea id="message" name="message" rows="4" 
+                                      class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm focus:ring-2 focus:ring-opacity-20 transition-all duration-300 form-input glow-border" 
+                                      placeholder="Your Message"></textarea>
                         </div>
-                        <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent bg-primary py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition">
+                        <button type="submit" 
+                                class="w-full inline-flex justify-center rounded-md border border-transparent bg-primary py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-300 glow-border">
                             Send Message
                         </button>
                     </form>
                 </div>
                 
                 <div class="md:w-1/2">
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg h-full">
-                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg h-full glow-border theme-transition">
+                        <h3 class="text-2xl font-bold mb-6 glow-text">Contact Information</h3>
                         
                         <div class="space-y-6">
                             <div class="flex items-start">
@@ -476,18 +673,18 @@
                         </div>
                         
                         <div class="mt-10">
-                            <h4 class="font-semibold mb-4">Follow Me</h4>
+                            <h4 class="font-semibold mb-4 glow-text">Follow Me</h4>
                             <div class="flex space-x-4">
-                                <a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="bg-gray-100 hover:bg-primary hover:text-white p-3 rounded-full transition">
+                                <a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="bg-gray-100 hover:bg-primary hover:text-white p-3 rounded-full transition glow-border">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://github.com/iam-shreya-singh" target="_blank" class="bg-gray-100 hover:bg-primary hover:text-white p-3 rounded-full transition">
+                                <a href="https://github.com/iam-shreya-singh" target="_blank" class="bg-gray-100 hover:bg-primary hover:text-white p-3 rounded-full transition glow-border">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white p-3 rounded-full transition">
+                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white p-3 rounded-full transition glow-border">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white p-3 rounded-full transition">
+                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white p-3 rounded-full transition glow-border">
                                     <i class="fas fa-globe"></i>
                                 </a>
                             </div>
@@ -539,28 +736,85 @@
         </div>
     </div>
 </footer>
-    <!-- Scripts -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
         });
         
-        // Initialize skill progress bars on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            const progressBars = document.querySelectorAll('.skill-progress');
-            progressBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.getElementById('app');
+        const navbar = document.getElementById('navbar');
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+        
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+        
+        // Animate skill bars
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
                 setTimeout(() => {
                     bar.style.width = width;
-                }, 300);
+                }, 500);
+            });
+            
+            // Add glow effect to cards on hover
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('glow-border');
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('glow-border');
+                });
+            });
+            
+            // Interactive navigation
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    link.classList.add('glow-text');
+                });
+                link.addEventListener('mouseleave', () => {
+                    link.classList.remove('glow-text');
+                });
+            });
+            
+            // Interactive form elements
+            const formInputs = document.querySelectorAll('.form-input');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.classList.add('glow-border');
+                });
+                input.addEventListener('blur', () => {
+                    input.classList.remove('glow-border');
+                });
             });
         });
     </script>
