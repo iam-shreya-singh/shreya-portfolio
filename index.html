@@ -295,12 +295,10 @@
              <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6 bg-white p-8 rounded-xl shadow-lg theme-transition dark:bg-gray-800">
              <!-- !! YOUR access key !! -->
              <input type="hidden" name="access_key" value="7c97640a-a17a-4d30-bb46-bb714250f263">
-
+             <!-- Optional: Success Redirect URL -->
+             <input type="hidden" name="redirect" value="https://web3forms.com/success">
              <!-- Optional: Subject Line for Emails we Receive -->
              <input type="hidden" name="subject" value="New Message from Portfolio Website">
-    
-             <!-- Optional: Redirect to a custom thank you page -->
-             <input type="hidden" name="redirect" value="https://yourdomain.com/thanks.html">
     <div>
         <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
         <input type="text" name="name" id="name" required class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm form-input bg-gray-100 dark:bg-gray-700">
