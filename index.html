@@ -30,19 +30,10 @@
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
                         },
-                        'pulse-glow': {
-                            '0%, 100%': { opacity: 0.5 },
-                            '50%': { opacity: 1 }
-                        },
+                        'pulse-glow': { '0%, 100%': { opacity: 0.5 }, '50%': { opacity: 1 } },
                         'glow': {
-                            '0%': { 
-                                boxShadow: '0 0 5px rgba(99, 102, 241, 0.5)',
-                                textShadow: '0 0 5px rgba(99, 102, 241, 0.5)'
-                            },
-                            '100%': { 
-                                boxShadow: '0 0 20px rgba(99, 102, 241, 0.8), 0 0 30px rgba(99, 102, 241, 0.6)',
-                                textShadow: '0 0 20px rgba(99, 102, 241, 0.8), 0 0 30px rgba(99, 102, 241, 0.6)'
-                            }
+                            '0%': { boxShadow: '0 0 5px rgba(99, 102, 241, 0.5)', textShadow: '0 0 5px rgba(99, 102, 241, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.8), 0 0 30px rgba(99, 102, 241, 0.6)', textShadow: '0 0 20px rgba(99, 102, 241, 0.8), 0 0 30px rgba(99, 102, 241, 0.6)' }
                         }
                     }
                 }
@@ -50,94 +41,88 @@
         }
     </script>
     <style>
-        /* Gradient Background */
-        .gradient-bg {
-            background: linear-gradient(135deg, #4f46e5, #6366f1);
-        }
+    /* Gradient Background */
+    .gradient-bg { background: linear-gradient(135deg, #4f46e5, #6366f1); }
+    
+    /* --- FIX: RESTORED GLOW AND FORM EFFECTS --- */
+    .glow-text {
+        transition: text-shadow 0.3s ease, color 0.3s ease;
+    }
+    .glow-text:hover {
+        text-shadow: 0 0 15px rgba(99, 102, 241, 0.8), 0 0 25px rgba(99, 102, 241, 0.6);
+    }
+    .glow-border {
+        transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .glow-border:hover {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.6), 0 0 30px rgba(99, 102, 241, 0.4);
+    }
+    .form-input {
+        transition: all 0.3s ease;
+    }
+    .form-input:focus {
+        transform: scale(1.02);
+    }
+    /* --- END OF FIX --- */
 
-        /* Glow Effects */
-        .glow-text:hover {
-            text-shadow: 0 0 15px rgba(99, 102, 241, 0.8), 0 0 25px rgba(99, 102, 241, 0.6);
-        }
-        
-        .glow-border:hover {
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.6), 0 0 30px rgba(99, 102, 241, 0.4);
-        }
-        
-        /* Project Card Hover */
-        .project-card {
-            transform: translateY(0);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
+    /* Project Card Hover */
+    .project-card { transform: translateY(0); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .project-card:hover { transform: translateY(-10px); }
+    .project-card:hover .project-overlay { opacity: 1; }
 
-        /* Animated Background */
-        .animated-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-            z-index: -1; animation: pulse-glow 4s infinite alternate;
-        }
-        
-        /* Skill Bars */
-        .skill-bar { position: relative; height: 10px; border-radius: 5px; background: #e2e8f0; overflow: hidden; }
-        .skill-progress { position: absolute; top: 0; left: 0; height: 100%; border-radius: 5px; background: linear-gradient(90deg, #6366f1, #4f46e5); transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1); width: 0; }
-        
-        /* General Transitions and Theming */
-        .theme-transition { transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease; }
-        .theme-toggle { position: fixed; top: 24px; right: 24px; z-index: 100; backdrop-filter: blur(10px); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
-        .theme-toggle:hover { transform: rotate(30deg); }
+    /* Animated Background */
+    .animated-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%); z-index: -1; animation: pulse-glow 4s infinite alternate; }
+    
+    /* Skill Bars */
+    .skill-bar { position: relative; height: 10px; border-radius: 5px; background: #e2e8f0; overflow: hidden; }
+    .skill-progress { position: absolute; top: 0; left: 0; height: 100%; border-radius: 5px; background: linear-gradient(90deg, #6366f1, #4f46e5); transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1); width: 0; }
+    
+    /* General Transitions and Theming */
+    .theme-transition { transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease; }
+    .theme-toggle { position: fixed; top: 24px; right: 24px; z-index: 100; backdrop-filter: blur(10px); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+    .theme-toggle:hover { transform: rotate(30deg); }
 
-        /* Dark Mode Styles */
-        html.dark { background-color: #111827; }
-        .dark body { background-color: #111827; color: #d1d5db; }
-        .dark .bg-white { background-color: #1f2937 !important; }
-        .dark .bg-gray-50 { background-color: #111827 !important; }
-        .dark .text-gray-800 { color: #d1d5db !important; }
-        .dark .text-gray-600 { color: #9ca3af !important; }
-        .dark .border-gray-200 { border-color: #374151 !important; }
-        .dark #navbar { background-color: rgba(31, 41, 55, 0.8) !important; }
-        .dark .bg-gray-100 { background-color: #374151 !important; }
-        .dark .skill-bar { background: #4b5563; }
-        .dark .skill-progress { background: linear-gradient(90deg, #818cf8, #6366f1); }
-        .dark .theme-toggle { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .dark .theme-toggle:hover { background: rgba(30, 41, 59, 0.9); }
-        
-        /* Resume Timeline Styles */
-        .timeline-line { position: absolute; height: 100%; border-r-2: border-gray-300; top: 0; }
-        .dark .timeline-line { border-color: #4b5563; }
-        .timeline-item { position: relative; display: flex; }
-        .timeline-item:nth-child(odd) { justify-content: flex-start; }
-        .timeline-item:nth-child(even) { justify-content: flex-end; }
-        .timeline-content { background: white; width: calc(50% - 40px); padding: 24px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); position: relative; border: 1px solid #e5e7eb; }
-        .dark .timeline-content { background: #1f2937; border-color: #374151; }
-        .timeline-content::after { content: ''; position: absolute; top: 28px; width: 0; height: 0; border-style: solid; }
-        .timeline-item:nth-child(odd) .timeline-content::after { right: -15px; border-width: 8px 0 8px 16px; border-color: transparent transparent transparent white; }
-        .dark .timeline-item:nth-child(odd) .timeline-content::after { border-color: transparent transparent transparent #1f2937; }
-        .timeline-item:nth-child(even) .timeline-content { margin-left: auto; }
-        .timeline-item:nth-child(even) .timeline-content::after { left: -15px; border-width: 8px 16px 8px 0; border-color: transparent white transparent transparent; }
-        .dark .timeline-item:nth-child(even) .timeline-content::after { border-color: transparent #1f2937 transparent transparent; }
-        .timeline-icon { position: absolute; top: 24px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; border: 4px solid #f3f4f6; }
-        .dark .timeline-icon { border-color: #111827; }
+    /* Dark Mode Styles */
+    html.dark { background-color: #111827; }
+    .dark body { background-color: #111827; color: #d1d5db; }
+    .dark .bg-white { background-color: #1f2937 !important; }
+    .dark .bg-gray-50 { background-color: #111827 !important; }
+    .dark .text-gray-800 { color: #d1d5db !important; }
+    .dark .text-gray-600 { color: #9ca3af !important; }
+    .dark .border-gray-200 { border-color: #374151 !important; }
+    .dark #navbar { background-color: rgba(31, 41, 55, 0.8) !important; }
+    .dark .bg-gray-100 { background-color: #374151 !important; }
+    .dark .skill-bar { background: #4b5563; }
+    .dark .skill-progress { background: linear-gradient(90deg, #818cf8, #6366f1); }
+    .dark .theme-toggle { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .dark .theme-toggle:hover { background: rgba(30, 41, 59, 0.9); }
+    
+    /* Resume Timeline Styles */
+    .timeline-line { position: absolute; height: 100%; top: 0; border-right: 2px solid #e5e7eb; }
+    .dark .timeline-line { border-color: #4b5563; }
+    .timeline-item { position: relative; display: flex; }
+    .timeline-item:nth-child(odd) { justify-content: flex-start; }
+    .timeline-item:nth-child(even) { justify-content: flex-end; }
+    .timeline-content { background: white; width: calc(50% - 40px); padding: 24px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); position: relative; border: 1px solid #e5e7eb; }
+    .dark .timeline-content { background: #1f2937; border-color: #374151; }
+    .timeline-content::after { content: ''; position: absolute; top: 28px; width: 0; height: 0; border-style: solid; }
+    .timeline-item:nth-child(odd) .timeline-content::after { right: -15px; border-width: 8px 0 8px 16px; border-color: transparent transparent transparent white; }
+    .dark .timeline-item:nth-child(odd) .timeline-content::after { border-color: transparent transparent transparent #1f2937; }
+    .timeline-item:nth-child(even) .timeline-content::after { left: -15px; border-width: 8px 16px 8px 0; border-color: transparent white transparent transparent; }
+    .dark .timeline-item:nth-child(even) .timeline-content::after { border-color: transparent #1f2937 transparent transparent; }
+    .timeline-icon { position: absolute; top: 24px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; border: 4px solid #f8fafc; }
+    .dark .timeline-icon { border-color: #111827; }
 
-        @media (max-width: 768px) {
-            .timeline-line { left: 20px !important; }
-            .timeline-item, .timeline-item:nth-child(even) { justify-content: flex-start; }
-            .timeline-content { width: calc(100% - 60px); margin-left: 40px; }
-            .timeline-item:nth-child(odd) .timeline-content::after, .timeline-item:nth-child(even) .timeline-content::after {
-                left: -15px; right: auto; border-width: 8px 16px 8px 0; border-color: transparent white transparent transparent;
-            }
-            .dark .timeline-item:nth-child(odd) .timeline-content::after, .dark .timeline-item:nth-child(even) .timeline-content::after {
-                 border-color: transparent #1f2937 transparent transparent;
-            }
-            .timeline-icon { left: 20px; }
-        }
-
-    </style>
+    @media (max-width: 768px) {
+        .timeline-line { left: 20px !important; }
+        .timeline-item, .timeline-item:nth-child(even) { justify-content: flex-start; }
+        .timeline-content { width: calc(100% - 60px); margin-left: 40px; }
+        .timeline-item:nth-child(even) .timeline-content { margin-left: 40px; }
+        .timeline-item:nth-child(odd) .timeline-content::after, .timeline-item:nth-child(even) .timeline-content::after { left: -15px; right: auto; border-width: 8px 16px 8px 0; border-color: transparent white transparent transparent; }
+        .dark .timeline-item:nth-child(odd) .timeline-content::after, .dark .timeline-item:nth-child(even) .timeline-content::after { border-color: transparent #1f2937 transparent transparent; }
+        .timeline-icon { left: 20px; }
+    }
+</style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans theme-transition">
     <!-- Theme Toggle Button -->
@@ -153,7 +138,6 @@
                 <a href="#home" class="hover:text-primary transition glow-text">Home</a>
                 <a href="#about" class="hover:text-primary transition glow-text">About</a>
                 <a href="#experience" class="hover:text-primary transition glow-text">Experience</a>
-                <!-- CORRECTED: Added Resume Link -->
                 <a href="#resume" class="hover:text-primary transition glow-text">Resume</a>
                 <a href="#skills" class="hover:text-primary transition glow-text">Skills</a>
                 <a href="#projects" class="hover:text-primary transition glow-text">Projects</a>
@@ -165,180 +149,166 @@
         </div>
     </nav>
 
-    <!-- Hero Section (No Changes) -->
+    <!-- Hero Section -->
     <section id="home" class="gradient-bg min-h-screen flex items-center pt-20 relative theme-transition">
-        <!-- ... content ... -->
-    </section>
-
-    <!-- About Section (No Changes) -->
-    <section id="about" class="py-20 bg-white theme-transition">
-        <!-- ... content ... -->
-    </section>
-
-    <!-- Original Experience Section (Kept for reference) -->
-    <section id="experience" class="py-20 bg-white theme-transition">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Experience</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
+        <div class="animated-bg"></div>
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center z-10">
+            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 glow-text">Hi, I'm <span class="text-yellow-300">Shreya Singh</span></h1>
+                <h2 class="text-2xl md:text-3xl text-gray-100 mb-8">Software Developer</h2>
+                <p class="text-lg text-gray-200 mb-10 max-w-lg">I build exceptional digital experiences with clean, efficient code. Passionate about creating solutions that make a difference.</p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#projects" class="bg-white text-primary font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition shadow-lg glow-border">View My Work</a>
+                    <a href="#contact" class="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-primary transition glow-border">Contact Me</a>
+                </div>
             </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Code on screen" class="rounded-full w-64 h-64 object-cover border-4 border-white shadow-xl animate-float">
+                    <div class="absolute -bottom-3 -right-3 bg-primary rounded-full p-4 shadow-lg glow-border floating-icon"><i class="fas fa-code text-white text-2xl"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white theme-transition">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">About Me</h2><div class="w-24 h-1 bg-primary mx-auto"></div></div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="About Shreya" class="rounded-lg shadow-xl glow-border"></div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-4 glow-text">Who am I?</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Hi! I'm Shreya, a software developer, learning by doing. I love designing systems, fixing bugs that make me think twice, and building tech that feels thoughtful and human. This space is where I build, break, learn, and grow — in public.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div><p class="font-semibold">Name:</p><p class="text-gray-600">Shreya Singh</p></div>
+                        <div><p class="font-semibold">Email:</p><p class="text-gray-600">shreyasinghin24@gmail.com</p></div>
+                        <div><p class="font-semibold">From:</p><p class="text-gray-600">Hyderabad, India</p></div>
+                        <div><p class="font-semibold">Languages:</p><p class="text-gray-600">English, Hindi</p></div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-primary hover:text-secondary transition glow-text"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="https://github.com/iam-shreya-singh" target="_blank" class="text-primary hover:text-secondary transition glow-text"><i class="fab fa-github text-2xl"></i></a>
+                        <a href="#" class="text-primary hover:text-secondary transition glow-text"><i class="fas fa-globe text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Original Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50 theme-transition">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Experience</h2><div class="w-24 h-1 bg-primary mx-auto"></div></div>
             <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="100">
                 <div class="bg-white rounded-xl shadow-lg p-8 mb-8 glow-border theme-transition">
                     <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold">Systems Engineer</h3>
-                            <p class="text-primary font-semibold">Infosys, Remote, India</p>
-                        </div>
+                        <div><h3 class="text-2xl font-bold">Systems Engineer</h3><p class="text-primary font-semibold">Infosys, Remote, India</p></div>
                         <span class="bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full">Nov 2021 – Dec 2023</span>
                     </div>
                     <ul class="space-y-3 text-gray-600">
-                        <!-- list items -->
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span>Analyzed and resolved software issues using SQL in production/staging environments, ensuring data integrity and system stability</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span>Developed and deployed SQL scripts and custom automation tools, improving debugging efficiency by 30%</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span>Contributed to code reviews and designed test plans (functional, regression, UAT) to ensure application performance and adherence to software development principles</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- *** NEW RESUME SECTION *** -->
-    <section id="resume" class="py-20 bg-gray-50 theme-transition">
+    <section id="resume" class="py-20 bg-white theme-transition">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Resume</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                    A summary of my professional journey and educational background.
-                </p>
+            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Resume</h2><div class="w-24 h-1 bg-primary mx-auto"></div><p class="text-gray-600 mt-4 max-w-2xl mx-auto">A summary of my professional journey and educational background.</p></div>
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-delay="100"><a href="ShreyaSingh_Resume.pdf" target="_blank" class="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-full hover:bg-secondary transition shadow-lg glow-border"><i class="fas fa-download mr-2"></i> Download Full Resume</a></div>
             </div>
-
-            <div class="text-center mb-16" data-aos="fade-up" data-aos-delay="100">
-                <a href="ShreyaSingh_Resume.pdf" target="_blank" class="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-full hover:bg-secondary transition shadow-lg glow-border">
-                    <i class="fas fa-download mr-2"></i> Download Full Resume
-                </a>
-            </div>
-
-            <div class="relative max-w-4xl mx-auto">
-                <div class="timeline-line absolute h-full border-r-2 border-gray-300 dark:border-gray-600 top-0" style="left: 50%; transform: translateX(-1px);"></div>
-                <div class="space-y-12">
-                    <!-- Timeline Block: Experience -->
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="timeline-content">
-                            <div class="timeline-icon bg-primary">
-                                <i class="fas fa-briefcase text-white"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold">Systems Engineer</h3>
-                            <p class="text-secondary font-semibold mb-2">Infosys, Remote, India</p>
-                            <span class="text-sm text-gray-500">Nov 2021 – Dec 2023</span>
-                            <ul class="mt-4 space-y-2 text-gray-600">
-                                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span>Analyzed and resolved software issues using SQL.</span></li>
-                                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span>Developed SQL scripts and automation tools, improving efficiency by 30%.</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Timeline Block: Education -->
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-content">
-                            <div class="timeline-icon bg-secondary">
-                                <i class="fas fa-graduation-cap text-white"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold">Bachelor of Technology</h3>
-                            <p class="text-primary font-semibold mb-2">JNTUH College of Engineering, Hyderabad</p>
-                            <span class="text-sm text-gray-500">2017 – 2021</span>
-                            <p class="mt-4 text-gray-600">
-                                Specialized in Electronics and Communication Engineering with a focus on software development principles.
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- *** SKILLS SECTION (RESTORED) *** -->
-    <section id="skills" class="py-20 bg-white theme-transition">
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 theme-transition">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Skills</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                    I've worked with a variety of technologies to build robust and scalable applications.
-                </p>
-            </div>
-            
+            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Skills</h2><div class="w-24 h-1 bg-primary mx-auto"></div><p class="text-gray-600 mt-4 max-w-2xl mx-auto">I've worked with a variety of technologies to build robust and scalable applications.</p></div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div data-aos="fade-right">
-                    <h3 class="text-xl font-bold mb-6 glow-text">Frontend Development</h3>
-                    <!-- HTML/CSS -->
-                    <div class="mb-6"><div class="flex justify-between mb-2"><span>HTML/CSS</span><span>95%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div></div>
-                    <!-- JavaScript -->
-                    <div class="mb-6"><div class="flex justify-between mb-2"><span>JavaScript</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div></div>
-                    <!-- React.js -->
-                    <div class="mb-6"><div class="flex justify-between mb-2"><span>React.js</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div>
-                    <!-- Next.js -->
-                    <div class="mb-6"><div class="flex justify-between mb-2"><span>Next.js</span><span>75%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div></div>
-                </div>
-                
-                <div data-aos="fade-left">
-                    <h3 class="text-xl font-bold mb-6 glow-text">Backend Development</h3>
-                    <!-- Node.js -->
-                    <div class="mb-6"><div class="flex justify-between mb-2"><span>Node.js</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div>
-                    <!-- Express.js -->
-                    <div class="mb-6"><div class="flex justify-between mb-2"><span>Express.js</span><span>80%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div></div>
-                    <!-- MongoDB -->
-                    <div class="mb-6"><div class="flex justify-between mb-2"><span>MongoDB</span><span>75%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div></div>
-                    <!-- SQL -->
-                    <div class="mb-6"><div class="flex justify-between mb-2"><span>SQL</span><span>70%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div></div>
-                </div>
+                <div data-aos="fade-right"><h3 class="text-xl font-bold mb-6 glow-text">Frontend Development</h3><div class="mb-6"><div class="flex justify-between mb-2"><span>HTML/CSS</span><span>95%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>JavaScript</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>React.js</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>Next.js</span><span>75%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div></div></div>
+                <div data-aos="fade-left"><h3 class="text-xl font-bold mb-6 glow-text">Backend Development</h3><div class="mb-6"><div class="flex justify-between mb-2"><span>Node.js</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>Express.js</span><span>80%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>MongoDB</span><span>75%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>SQL</span><span>70%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div></div></div>
             </div>
-            
-            <div class="mt-16" data-aos="fade-up">
-                <h3 class="text-xl font-bold mb-8 text-center glow-text">Tools & Technologies</h3>
-                <div class="flex flex-wrap justify-center gap-6">
-                    <!-- Tools icons -->
-                </div>
-            </div>
+            <div class="mt-16" data-aos="fade-up"><h3 class="text-xl font-bold mb-8 text-center glow-text">Tools & Technologies</h3><div class="flex flex-wrap justify-center gap-6"><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-git-alt text-4xl text-primary"></i></div><p>Git</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-docker text-4xl text-primary"></i></div><p>Docker</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-aws text-4xl text-primary"></i></div><p>AWS</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fas fa-server text-4xl text-primary"></i></div><p>Postman</p></div></div></div>
         </div>
     </section>
 
-    <!-- *** PROJECTS SECTION (RESTORED) *** -->
-    <section id="projects" class="py-20 bg-gray-50 theme-transition">
-        <!-- ... content ... -->
-    </section>
-
-    <!-- *** CONTACT SECTION (RESTORED) *** -->
-    <section id="contact" class="py-20 bg-white theme-transition">
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white theme-transition">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Get In Touch</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                    Have a project in mind or want to collaborate? Feel free to reach out!
-                </p>
-            </div>
-            
-            <div class="flex flex-col md:flex-row gap-12">
-                <div class="md:w-1/2" data-aos="fade-right">
-                    <form class="space-y-6 bg-gray-50 p-8 rounded-xl shadow-lg">
-                        <!-- form inputs -->
-                    </form>
-                </div>
-                <div class="md:w-1/2" data-aos="fade-left">
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg h-full glow-border theme-transition">
-                        <!-- contact info -->
-                    </div>
-                </div>
+            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Projects</h2><div class="w-24 h-1 bg-primary mx-auto"></div><p class="text-gray-600 mt-4 max-w-2xl mx-auto">Here are some of my recent projects that showcase my skills.</p></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="100"><div class="relative"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Audio Room App" class="w-full h-56 object-cover"><div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 project-overlay transition-opacity duration-300"><a href="https://github.com/iam-shreya-singh/Audio-Room-App" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a></div></div><div class="p-6"><h3 class="text-xl font-bold mb-2 glow-text">Audio Room App</h3><p class="text-gray-600 mb-4">Real-time audio rooms using React, Node.js, Stream API, and WebSockets.</p><div class="flex flex-wrap gap-2"><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">React.js</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Node.js</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">MongoDB</span></div></div></div>
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="200"><div class="relative"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Personal Budget Tracker" class="w-full h-56 object-cover"><div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 project-overlay transition-opacity duration-300"><a href="https://github.com/iam-shreya-singh/Personal-Budget-Tracker" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a></div></div><div class="p-6"><h3 class="text-xl font-bold mb-2 glow-text">Personal Budget Tracker</h3><p class="text-gray-600 mb-4">Django REST + React.js app to visualize income vs expense.</p><div class="flex flex-wrap gap-2"><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Django REST</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">React.js</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Zustand</span></div></div></div>
             </div>
         </div>
     </section>
 
-    <!-- Footer (No Changes) -->
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 theme-transition">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Get In Touch</h2><div class="w-24 h-1 bg-primary mx-auto"></div><p class="text-gray-600 mt-4 max-w-2xl mx-auto">Have a project in mind or want to collaborate? Feel free to reach out!</p></div>
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2" data-aos="fade-right"><form class="space-y-6 bg-white p-8 rounded-xl shadow-lg"><div><label for="name" class="block text-sm font-medium text-gray-700">Name</label><input type="text" name="name" id="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Your Name"></div><div><label for="email" class="block text-sm font-medium text-gray-700">Email</label><input type="email" name="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Your Email"></div><div><label for="message" class="block text-sm font-medium text-gray-700">Message</label><textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" placeholder="Your Message"></textarea></div><button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent bg-primary py-3 px-6 text-sm font-medium text-white shadow-sm hover:bg-secondary">Send Message</button></form></div>
+                <div class="md:w-1/2" data-aos="fade-left"><div class="bg-white p-8 rounded-xl shadow-lg h-full glow-border theme-transition"><h3 class="text-2xl font-bold mb-6 glow-text">Contact Information</h3><div class="space-y-6"><div class="flex items-start"><div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4"><i class="fas fa-envelope text-primary"></i></div><div><h4 class="font-semibold mb-1">Email</h4><p class="text-gray-600">shreyasinghin24@gmail.com</p></div></div><div class="flex items-start"><div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4"><i class="fab fa-linkedin text-primary"></i></div><div><h4 class="font-semibold mb-1">LinkedIn</h4><p class="text-gray-600">linkedin.com/in/shreya-singh24</p></div></div><div class="flex items-start"><div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4"><i class="fab fa-github text-primary"></i></div><div><h4 class="font-semibold mb-1">GitHub</h4><p class="text-gray-600">github.com/iam-shreya-singh</p></div></div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="bg-dark text-white py-10 relative overflow-hidden theme-transition">
-        <!-- ... content ... -->
+        <div class="animated-bg"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-center"><div class="mb-6 md:mb-0"><a href="#" class="text-2xl font-bold glow-text">Shreya<span class="text-primary">.</span></a><p class="mt-2 text-gray-400">Creating digital experiences that matter</p></div><div class="flex flex-wrap justify-center gap-4"><a href="#home" class="hover:text-primary transition glow-text">Home</a><a href="#about" class="hover:text-primary transition glow-text">About</a><a href="#projects" class="hover:text-primary transition glow-text">Projects</a><a href="#contact" class="hover:text-primary transition glow-text">Contact</a></div></div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"><p class="text-gray-400">© 2024 Shreya Singh. All rights reserved.</p><div class="flex space-x-4 mt-4 md:mt-0"><a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-linkedin-in"></i></a><a href="https://github.com/iam-shreya-singh" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-github"></i></a></div></div>
+        </div>
     </footer>
 
-    <!-- Script (No Changes) -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // AOS, Theme Toggle, and Skill Bar scripts...
+        // Initialize AOS animations
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 100 });
+        
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const rootHtml = document.documentElement;
+        if (localStorage.getItem('theme') === 'dark') {
+            rootHtml.classList.add('dark');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+        themeToggle.addEventListener('click', () => {
+            rootHtml.classList.toggle('dark');
+            if (rootHtml.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+        
+        // Animate skill bars on scroll
+        const skillsSection = document.getElementById('skills');
+        const skillBars = document.querySelectorAll('.skill-progress');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    skillBars.forEach(bar => {
+                        bar.style.width = bar.parentElement.style.getPropertyValue('--progress');
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        if (skillsSection) { observer.observe(skillsSection); }
     </script>
 </body>
 </html>
