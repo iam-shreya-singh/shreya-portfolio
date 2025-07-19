@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shreya Singh | Software Developer</title>
@@ -9,7 +9,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <!-- Enhancement: Typed in hero section -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
+    <!-- 3D 3js Library -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+        }
+    }
+</script>
     <!-- ENHANCEMENT 3: Google Font Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,13 +34,19 @@
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
                     },
-                    colors: {
+                    /*colors: {  -- more colour option--- pallete 1---
                         primary: '#6366f1',
                         secondary: '#4f46e5',
                         dark: '#1e293b',
                         light: '#f8fafc',
                         accent: '#f59e0b',
                         neon: '#0ea5e9'
+                    },*/
+                         colors: {
+                         primary: '#f59e0b',   // Amber
+                         secondary: '#fbbf24', // Lighter Amber
+                         dark: '#0f172a',      // Slate/Deep Blue
+                         light: '#f8fafc',
                     },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
@@ -52,6 +66,22 @@
         }
     </script>
     <style>
+    /* CSS for the Mouse Follow Glow */
+#mouse-glow {
+    background: radial-gradient(
+        600px at var(--x) var(--y),
+        rgba(99, 102, 241, 0.15), /* Your primary color with low opacity */
+        transparent 80%
+    );
+}
+
+    /* Make the glow more subtle in dark mode */
+    .dark #mouse-glow {
+        background: radial-gradient(
+        600px at var(--x) var(--y),
+        rgba(99, 102, 241, 0.1), /* Even lower opacity for dark mode */
+        transparent 80%);
+    }
     /* ENHANCEMENT 1: Smooth Scrolling */
     html {
         scroll-behavior: smooth;
@@ -157,6 +187,8 @@
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans theme-transition">
+    <!-- ***Mouse Follow Glow Element *** -->
+    <div id="mouse-glow" class="pointer-events-none fixed inset-0 z-30 transition duration-300"></div>
     <!-- Theme Toggle Button -->
     <div class="theme-toggle glow-border" id="themeToggle">
         <i class="fas fa-sun text-white text-xl" id="themeIcon"></i>
@@ -202,9 +234,9 @@
             <div class="md:w-1/2 flex justify-center">
                 <div class="relative">
                     <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Code on screen" class="rounded-full w-64 h-64 object-cover border-4 border-white shadow-xl animate-float">
-                    <div class="absolute -bottom-3 -right-3 bg-primary rounded-full p-4 shadow-lg glow-border floating-icon"><i class="fas fa-code text-white text-2xl"></i></div>
+                    <!-- *** NEW: 3D Object Canvas *** -->
+                    <div id="3d-container" class="absolute -bottom-8 -right-4 w-32 h-32 md:-bottom-4 md:-right-4 md:w-40 md:h-40 cursor-grab active:cursor-grabbing"><canvas id="3d-canvas"></canvas></div>                </div>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -578,5 +610,75 @@ timeline.to(icons, {
     };
     var typed = new Typed('#typed-text', options);
 });
+        // --- MOUSE-FOLLOWING GRADIENT GLOW CSS var updated---
+        const glow = document.getElementById('mouse-glow');
+        window.addEventListener('pointermove', (e) => {
+       // Get the position of the mouse
+       const { clientX, clientY } = e;
+       // Update the CSS custom properties on the glow element
+      glow.style.setProperty('--x', `${clientX}px`);
+      glow.style.setProperty('--y', `${clientY}px`);
+      });
+        // Add this new script block at the very end of your body, after the main script
+    < type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // --- 3D SCENE SETUP  ---
+    const container = document.getElementById('3d-container');
+    const canvas = document.getElementById('3d-canvas');
+    if (!container || !canvas) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        alpha: true // Makes the canvas background transparent
+    });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // --- OBJECT CREATION for 3D rotating anim look---
+    // Using an Icosahedron for a "crystal" 3D look
+    const geometry = new THREE.IcosahedronGeometry(1.5, 0); 
+    
+    // Using a wireframe-like material
+    const material = new THREE.MeshBasicMaterial({
+        color: 0x818cf8, // A light purple that matches your theme
+        wireframe: true
+    });
+    const crystal = new THREE.Mesh(geometry, material);
+    scene.add(crystal);
+
+    // --- LIGHTS & CAMERA ---
+    camera.position.z = 3.5;
+
+    // --- CONTROLS ---
+    // Allows the user to rotate the object with the mouse
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // Smooths out the rotation
+    controls.enableZoom = false; // Disable zooming
+    controls.enablePan = false; // Disable panning
+
+    // --- ANIMATION LOOP ---
+    function animate() {
+        requestAnimationFrame(animate);
+
+        // Auto-rotation
+        crystal.rotation.x += 0.001;
+        crystal.rotation.y += 0.002;
+
+        controls.update(); // Necessary for damping
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // --- RESPONSIVENESS ---
+    window.addEventListener('resize', () => {
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+    });
 </script>
 </html>
