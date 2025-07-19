@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shreya Singh | Software Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- ENHANCEMENT 3: Google Font Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script>
@@ -68,8 +70,9 @@
         background-color: #6366f1;
         bottom: -4px;
         left: 20%;
+        border-radius: 1px;
     }
-
+    
     /* Gradient Background */
     .gradient-bg { background: linear-gradient(135deg, #4f46e5, #6366f1); }
     
@@ -141,72 +144,276 @@
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans theme-transition">
-    <!-- All body content is the same -->
-    <!-- ... -->
-    
-    <!-- The closing script tag is where we add the JS -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        // Initialize AOS animations
-        AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 100 });
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle glow-border" id="themeToggle">
+        <i class="fas fa-sun text-white text-xl" id="themeIcon"></i>
+    </div>
+
+    <!-- Navigation -->
+    <!-- The NEW, updated <nav> section -->
+<nav class="fixed w-full bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-md z-50 theme-transition" id="navbar">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <a href="#home" class="text-2xl font-bold text-primary glow-text">Shreya<span class="text-secondary">.</span></a>
         
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const rootHtml = document.documentElement;
-        if (localStorage.getItem('theme') === 'dark') {
-            rootHtml.classList.add('dark');
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none text-gray-800 dark:text-gray-200">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+
+        <!-- Navigation Links (for both desktop and mobile) -->
+        <div id="nav-links" class="hidden md:flex md:items-center md:space-x-8 absolute md:static top-full left-0 w-full md:w-auto bg-white/95 dark:bg-dark/95 md:bg-transparent dark:md:bg-transparent shadow-lg md:shadow-none p-5 md:p-0">
+            <a href="#home" class="block md:inline-block py-2 md:py-0 hover:text-primary transition glow-text">Home</a>
+            <a href="#about" class="block md:inline-block py-2 md:py-0 hover:text-primary transition glow-text">About</a>
+            <a href="#experience" class="block md:inline-block py-2 md:py-0 hover:text-primary transition glow-text">Experience</a>
+            <a href="#resume" class="block md:inline-block py-2 md:py-0 hover:text-primary transition glow-text">Resume</a>
+            <a href="#skills" class="block md:inline-block py-2 md:py-0 hover:text-primary transition glow-text">Skills</a>
+            <a href="#projects" class="block md:inline-block py-2 md:py-0 hover:text-primary transition glow-text">Projects</a>
+            <a href="#contact" class="block md:inline-block py-2 md:py-0 hover:text-primary transition glow-text">Contact</a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg min-h-screen flex items-center pt-20 relative theme-transition">
+        <div class="animated-bg"></div>
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center z-10">
+            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 glow-text">Hi, I'm <span class="text-yellow-300">Shreya Singh</span></h1>
+                <h2 class="text-2xl md:text-3xl text-gray-100 mb-8">Software Developer</h2>
+                <p class="text-lg text-gray-200 mb-10 max-w-lg">I build exceptional digital experiences with clean, efficient code. Passionate about creating solutions that make a difference.</p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#projects" class="bg-white text-primary font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition shadow-lg glow-border">View My Work</a>
+                    <a href="#contact" class="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-primary transition glow-border">Contact Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Code on screen" class="rounded-full w-64 h-64 object-cover border-4 border-white shadow-xl animate-float">
+                    <div class="absolute -bottom-3 -right-3 bg-primary rounded-full p-4 shadow-lg glow-border floating-icon"><i class="fas fa-code text-white text-2xl"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white theme-transition">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">About Me</h2><div class="w-24 h-1 bg-primary mx-auto"></div></div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="About Shreya" class="rounded-lg shadow-xl glow-border"></div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-4 glow-text">Who am I?</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Hi! I'm Shreya, a software developer, learning by doing. I love designing systems, fixing bugs that make me think twice, and building tech that feels thoughtful and human. This space is where I build, break, learn, and grow — in public.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div><p class="font-semibold">Name:</p><p class="text-gray-600">Shreya Singh</p></div>
+                        <div><p class="font-semibold">Email:</p><p class="text-gray-600">shreyasinghin24@gmail.com</p></div>
+                        <div><p class="font-semibold">From:</p><p class="text-gray-600">Ranchi, JH, India</p></div>
+                        <div><p class="font-semibold">Languages:</p><p class="text-gray-600">English, Hindi</p></div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-primary hover:text-secondary transition glow-text"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="https://github.com/iam-shreya-singh" target="_blank" class="text-primary hover:text-secondary transition glow-text"><i class="fab fa-github text-2xl"></i></a>
+                        <a href="#" class="text-primary hover:text-secondary transition glow-text"><i class="fas fa-globe text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Original Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50 theme-transition">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Experience</h2><div class="w-24 h-1 bg-primary mx-auto"></div></div>
+            <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-8 glow-border theme-transition">
+                    <div class="flex justify-between items-start mb-4">
+                        <div><h3 class="text-2xl font-bold">Systems Engineer</h3><p class="text-primary font-semibold">Infosys, Remote, India</p></div>
+                        <span class="bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full">Nov 2021 – Dec 2023</span>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span>Analyzed and resolved software issues using SQL in production/staging environments, ensuring data integrity and system stability</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span>Developed and deployed SQL scripts and custom automation tools, improving debugging efficiency by 30%</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span>Contributed to code reviews and designed test plans (functional, regression, UAT) to ensure application performance and adherence to software development principles</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- *** RESUME SECTION (NOW FIXED) *** -->
+    <section id="resume" class="py-20 bg-white theme-transition">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Resume</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">A summary of my professional journey and educational background.</p>
+            </div>
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-delay="100">
+                <a href="assets/Shreya-Singh-Resume.pdf" target="_blank" class="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-full hover:bg-secondary transition shadow-lg glow-border">
+                    <i class="fas fa-download mr-2"></i> Download Full Resume
+                </a>
+            </div>
+            <div class="relative max-w-4xl mx-auto">
+                <div class="timeline-line absolute h-full top-0" style="left: 50%; transform: translateX(-1px);"></div>
+                <div class="space-y-12">
+                    <!-- Timeline Block: Experience -->
+                    <!-- Timeline Block: Education -->
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 theme-transition">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Skills</h2><div class="w-24 h-1 bg-primary mx-auto"></div><p class="text-gray-600 mt-4 max-w-2xl mx-auto">I've worked with a variety of technologies to build robust and scalable applications.</p></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div data-aos="fade-right"><h3 class="text-xl font-bold mb-6 glow-text">Frontend Development</h3><div class="mb-6"><div class="flex justify-between mb-2"><span>HTML/CSS</span><span>95%</span></div><div class="skill-bar" style="--progress: 95%;"><div class="skill-progress"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>JavaScript</span><span>90%</span></div><div class="skill-bar" style="--progress: 90%;"><div class="skill-progress"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>React.js</span><span>85%</span></div><div class="skill-bar" style="--progress: 85%;"><div class="skill-progress"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>Next.js</span><span>75%</span></div><div class="skill-bar" style="--progress: 75%;"><div class="skill-progress"></div></div></div></div>
+                <div data-aos="fade-left"><h3 class="text-xl font-bold mb-6 glow-text">Backend Development</h3><div class="mb-6"><div class="flex justify-between mb-2"><span>Node.js</span><span>85%</span></div><div class="skill-bar" style="--progress: 85%;"><div class="skill-progress"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>Express.js</span><span>80%</span></div><div class="skill-bar" style="--progress: 80%;"><div class="skill-progress"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>MongoDB</span><span>75%</span></div><div class="skill-bar" style="--progress: 75%;"><div class="skill-progress"></div></div></div><div class="mb-6"><div class="flex justify-between mb-2"><span>SQL</span><span>70%</span></div><div class="skill-bar" style="--progress: 70%;"><div class="skill-progress"></div></div></div></div>
+            </div>
+            <div class="mt-16" data-aos="fade-up"><h3 class="text-xl font-bold mb-8 text-center glow-text">Tools & Technologies</h3><div class="flex flex-wrap justify-center gap-6"><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-git-alt text-4xl text-primary"></i></div><p>Git</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-docker text-4xl text-primary"></i></div><p>Docker</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-aws text-4xl text-primary"></i></div><p>AWS</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fas fa-server text-4xl text-primary"></i></div><p>Postman</p></div></div></div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white theme-transition">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Projects</h2><div class="w-24 h-1 bg-primary mx-auto"></div><p class="text-gray-600 mt-4 max-w-2xl mx-auto">Here are some of my recent projects that showcase my skills.</p></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="100"><div class="relative"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Audio Room App" class="w-full h-56 object-cover"><div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 project-overlay transition-opacity duration-300"><a href="https://github.com/iam-shreya-singh/Audio-Room-App" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a></div></div><div class="p-6"><h3 class="text-xl font-bold mb-2 glow-text">Audio Room App</h3><p class="text-gray-600 mb-4">Real-time audio rooms using React, Node.js, Stream API, and WebSockets.</p><div class="flex flex-wrap gap-2"><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">React.js</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Node.js</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">MongoDB</span></div></div></div>
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="200"><div class="relative"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Personal Budget Tracker" class="w-full h-56 object-cover"><div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 project-overlay transition-opacity duration-300"><a href="https://github.com/iam-shreya-singh/Personal-Budget-Tracker" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a></div></div><div class="p-6"><h3 class="text-xl font-bold mb-2 glow-text">Personal Budget Tracker</h3><p class="text-gray-600 mb-4">Django REST + React.js app to visualize income vs expense.</p><div class="flex flex-wrap gap-2"><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Django REST</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">React.js</span><span class="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Zustand</span></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section / form section -->
+    <section id="contact" class="py-20 bg-gray-50 theme-transition">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Get In Touch</h2><div class="w-24 h-1 bg-primary mx-auto"></div><p class="text-gray-600 mt-4 max-w-2xl mx-auto">Have a project in mind or want to collaborate? Feel free to reach out!</p></div>
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2" data-aos="fade-right">
+
+             <!--  updated <form> tag -->
+             <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6 bg-white p-8 rounded-xl shadow-lg theme-transition dark:bg-gray-800">
+             <!-- !! YOUR access key !! -->
+             <input type="hidden" name="access_key" value="7c97640a-a17a-4d30-bb46-bb714250f263">
+
+             <!-- Optional: Subject Line for Emails we Receive -->
+             <input type="hidden" name="subject" value="New Message from Portfolio Website">
+    
+             <!-- Optional: Redirect to a custom thank you page -->
+             <input type="hidden" name="redirect" value="https://yourdomain.com/thanks.html">
+    <div>
+        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+        <input type="text" name="name" id="name" required class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm form-input bg-gray-100 dark:bg-gray-700">
+    </div>
+    
+    <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+        <input type="email" name="email" id="email" required class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm form-input bg-gray-100 dark:bg-gray-700">
+    </div>
+    
+    <div>
+        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm form-input bg-gray-100 dark:bg-gray-700"></textarea>
+    </div>
+    
+    <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent bg-primary py-3 px-6 text-base font-medium text-white shadow-sm hover:bg-secondary transition-all duration-300 glow-border">
+        Send Message
+    </button>
+</form></div>
+                <div class="md:w-1/2" data-aos="fade-left"><div class="bg-white p-8 rounded-xl shadow-lg h-full glow-border theme-transition"><h3 class="text-2xl font-bold mb-6 glow-text">Contact Information</h3><div class="space-y-6"><div class="flex items-start"><div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4"><i class="fas fa-envelope text-primary"></i></div><div><h4 class="font-semibold mb-1">Email</h4><p class="text-gray-600">shreyasinghin24@gmail.com</p></div></div><div class="flex items-start"><div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4"><i class="fab fa-linkedin text-primary"></i></div><div><h4 class="font-semibold mb-1">LinkedIn</h4><p class="text-gray-600">linkedin.com/in/shreya-singh24</p></div></div><div class="flex items-start"><div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4"><i class="fab fa-github text-primary"></i></div><div><h4 class="font-semibold mb-1">GitHub</h4><p class="text-gray-600">github.com/iam-shreya-singh</p></div></div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-10 relative overflow-hidden theme-transition">
+        <div class="animated-bg"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-center"><div class="mb-6 md:mb-0"><a href="#" class="text-2xl font-bold glow-text">Shreya<span class="text-primary">.</span></a><p class="mt-2 text-gray-400">Creating digital experiences that matter</p></div><div class="flex flex-wrap justify-center gap-4"><a href="#home" class="hover:text-primary transition glow-text">Home</a><a href="#about" class="hover:text-primary transition glow-text">About</a><a href="#projects" class="hover:text-primary transition glow-text">Projects</a><a href="#contact" class="hover:text-primary transition glow-text">Contact</a></div></div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"><p class="text-gray-400">© 2024 Shreya Singh. All rights reserved.</p><div class="flex space-x-4 mt-4 md:mt-0"><a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-linkedin-in"></i></a><a href="https://github.com/iam-shreya-singh" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-github"></i></a></div></div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script>
+    // Initialize AOS animations
+    AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 100 });
+    
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const rootHtml = document.documentElement;
+    if (localStorage.getItem('theme') === 'dark') {
+        rootHtml.classList.add('dark');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+    themeToggle.addEventListener('click', () => {
+        rootHtml.classList.toggle('dark');
+        if (rootHtml.classList.contains('dark')) {
+            localStorage.setItem('theme', 'dark');
             themeIcon.classList.remove('fa-sun');
             themeIcon.classList.add('fa-moon');
+        } else {
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
-        themeToggle.addEventListener('click', () => {
-            rootHtml.classList.toggle('dark');
-            if (rootHtml.classList.contains('dark')) {
-                localStorage.setItem('theme', 'dark');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
+    });
+    
+    // Animate skill bars on scroll
+    const skillsSection = document.getElementById('skills');
+    const skillBars = document.querySelectorAll('.skill-progress');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                skillBars.forEach(bar => {
+                    bar.style.width = bar.parentElement.style.getPropertyValue('--progress');
+                });
             }
         });
-        
-        // Animate skill bars on scroll
-        const skillsSection = document.getElementById('skills');
-        const skillBars = document.querySelectorAll('.skill-progress');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    skillBars.forEach(bar => {
-                        bar.style.width = bar.parentElement.style.getPropertyValue('--progress');
-                    });
-                }
-            });
-        }, { threshold: 0.5 });
-        if (skillsSection) { observer.observe(skillsSection); }
-
-        // ENHANCEMENT 2: Active Nav Link Highlighting Logic
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('nav a');
-
-        const navObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    navLinks.forEach(link => {
-                        link.classList.remove('active-link');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active-link');
-                        }
-                    });
-                }
-            });
-        }, { rootMargin: '-30% 0px -70% 0px' });
-
-        sections.forEach(section => {
-            navObserver.observe(section);
+    }, { threshold: 0.5 });
+    if (skillsSection) { observer.observe(skillsSection); }
+    
+    // --- Active Nav Link Highlighting Logic ---
+    const sections = document.querySelectorAll('section[id]');
+    // Note: We will reuse 'allNavLinks' from the mobile menu section below
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                document.querySelectorAll('#nav-links a').forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active-link');
+                    }
+                });
+            }
         });
-    </script>
-</body>
+    }, { rootMargin: '-40% 0px -60% 0px' }); 
+
+    sections.forEach(section => {
+        navObserver.observe(section);
+    });
+
+    // --- MOBILE MENU FUNCTIONALITY (COMBINED) ---
+    const menuButton = document.getElementById('mobile-menu-button');
+    const navLinksContainer = document.getElementById('nav-links');
+    const allNavLinks = navLinksContainer.querySelectorAll('a');
+
+    // Toggle the menu when the hamburger icon is clicked
+    menuButton.addEventListener('click', () => {
+        navLinksContainer.classList.toggle('hidden');
+    });
+
+    // Close the mobile menu when a link is clicked
+    allNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Only close if the mobile menu is currently open
+            if (window.innerWidth < 768) { // 768px is the 'md' breakpoint
+                 navLinksContainer.classList.add('hidden');
+            }
+        });
+    });
+</script>
 </html>
