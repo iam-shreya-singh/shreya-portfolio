@@ -215,6 +215,25 @@
                         <a href="https://github.com/iam-shreya-singh" target="_blank" class="text-primary hover:text-secondary transition glow-text"><i class="fab fa-github text-2xl"></i></a>
                         <a href="#" class="text-primary hover:text-secondary transition glow-text"><i class="fas fa-globe text-2xl"></i></a>
                     </div>
+                        <!-- *** NEW: GitHub Stats Widget *** -->
+                     <div class="mt-12 p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-inner theme-transition">
+                     <h4 class="text-lg font-semibold mb-4 text-center text-gray-700 dark:text-gray-300">Live GitHub Stats</h4>
+                     <div class="flex justify-around text-center">
+                  <div>
+                     <p id="github-repos" class="text-3xl font-bold text-primary">--</p>
+                     <p class="text-sm text-gray-500 dark:text-gray-400">Repositories</p>
+                     </div>
+                     <div>
+                     <p id="github-stars" class="text-3xl font-bold text-primary">--</p>
+                     <p class="text-sm text-gray-500 dark:text-gray-400">Stars Received</p>
+                    </div>
+                <div>
+                    <p id="github-followers" class="text-3xl font-bold text-primary">--</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Followers</p>
+                </div>
+            </div> 
+        </div>
+            <!-- *** End of Github stats Widget *** -->
                 </div>
             </div>
         </div>
@@ -413,5 +432,41 @@
             }
         });
     });
+    // --- GITHUB STATS FETCHER ---
+async function getGitHubStats() {
+    const username = 'iam-shreya-singh';
+    const userUrl = `https://api.github.com/users/${username}`;
+    const reposUrl = `https://api.github.com/users/${username}/repos`;
+
+    try {
+        // Fetch user data (for followers)
+        const userResponse = await fetch(userUrl);
+        if (!userResponse.ok) throw new Error('User not found');
+        const userData = await userResponse.json();
+        
+        // Fetch repository data (to calculate total stars)
+        const reposResponse = await fetch(reposUrl);
+        if (!reposResponse.ok) throw new Error('Could not fetch repos');
+        const reposData = await reposResponse.json();
+
+        // Calculate total stars
+        const totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+
+        // Update the DOM
+        document.getElementById('github-repos').textContent = userData.public_repos;
+        document.getElementById('github-followers').textContent = userData.followers;
+        document.getElementById('github-stars').textContent = totalStars;
+
+    } catch (error) {
+        console.error('Failed to fetch GitHub stats:', error);
+        // Optionally update the UI to show an error
+        document.getElementById('github-repos').textContent = 'N/A';
+        document.getElementById('github-followers').textContent = 'N/A';
+        document.getElementById('github-stars').textContent = 'N/A';
+    }
+}
+
+// Call the function on page load
+getGitHubStats();
 </script>
 </html>
