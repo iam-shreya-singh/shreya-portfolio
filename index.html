@@ -415,7 +415,7 @@
             
             <div class="flex flex-col md:flex-row gap-12">
                 <div class="md:w-1/2">
-                    <!-- Lightwind UI inspired form -->
+                
                     <form class="space-y-6 bg-gray-50 p-8 rounded-xl shadow-lg">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
@@ -499,46 +499,47 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-10">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <a href="#" class="text-2xl font-bold">
-                        Shreya<span class="text-primary">.</span>
-                    </a>
-                    <p class="mt-2 text-gray-400">Creating digital experiences that matter</p>
-                </div>
-                
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#home" class="hover:text-primary transition">Home</a>
-                    <a href="#about" class="hover:text-primary transition">About</a>
-                    <a href="#skills" class="hover:text-primary transition">Skills</a>
-                    <a href="#experience" class="hover:text-primary transition">Experience</a>
-                    <a href="#projects" class="hover:text-primary transition">Projects</a>
-                    <a href="#contact" class="hover:text-primary transition">Contact</a>
-                </div>
+  <footer class="bg-dark text-white py-10 relative overflow-hidden theme-transition">
+    <div class="animated-bg"></div>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <a href="#" class="text-2xl font-bold glow-text">
+                    Shreya<span class="text-primary">.</span>
+                </a>
+                <p class="mt-2 text-gray-400">Creating digital experiences that matter</p>
             </div>
             
-            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400">© 2023 Shreya Singh. All rights reserved.</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-gray-400 hover:text-primary transition">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/iam-shreya-singh" target="_blank" class="text-gray-400 hover:text-primary transition">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition">
-                        <i class="fas fa-globe"></i>
-                    </a>
-                </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#home" class="hover:text-primary transition glow-text">Home</a>
+                <a href="#about" class="hover:text-primary transition glow-text">About</a>
+                <a href="#skills" class="hover:text-primary transition glow-text">Skills</a>
+                <a href="#experience" class="hover:text-primary transition glow-text">Experience</a>
+                <a href="#projects" class="hover:text-primary transition glow-text">Projects</a>
+                <a href="#contact" class="hover:text-primary transition glow-text">Contact</a>
             </div>
         </div>
-    </footer>
-
+        
+        <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 theme-transition" id="footer-text">© 2023 Shreya Singh. All rights reserved.</p>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-gray-400 hover:text-primary transition glow-text">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/iam-shreya-singh" target="_blank" class="text-gray-400 hover:text-primary transition glow-text">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-primary transition glow-text">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-primary transition glow-text">
+                    <i class="fas fa-globe"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Scripts -->
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
