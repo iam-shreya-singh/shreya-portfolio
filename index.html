@@ -159,7 +159,7 @@
     
     /* General Transitions and Theming */
     .theme-transition { transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease; }
-    .theme-toggle { position: fixed; top: 24px; right: 24px; z-index: 100; backdrop-filter: blur(10px); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
+    .theme-toggle { position: fixed; top: 9px; right: 9px; z-index: 100; backdrop-filter: blur(10px); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
     .theme-toggle:hover { transform: rotate(30deg); }
 
     /* Dark Mode Styles */
@@ -253,13 +253,13 @@
     <div id="mouse-glow" class="pointer-events-none fixed inset-0 z-30 transition duration-300"></div>
     <!-- Theme Toggle Button -->
     <div class="theme-toggle glow-border" id="themeToggle">
-        <i class="fas fa-sun text-white text-xl" id="themeIcon"></i>
-    </div>
+    <i class="fas fa-sun text-primary dark:text-white text-xl transition-colors duration-300" id="themeIcon"></i>    
+   </div>
 
     <!-- Navigation -->
     <!-- The NEW, updated <nav> section -->
 <nav class="fixed w-full bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-md z-50 theme-transition" id="navbar">
-    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+<div class="container mx-auto px-6 pr-16 md:pr-6 py-3 flex justify-between items-center">
         <a href="#home" class="text-2xl font-bold text-primary glow-text">Shreya<span class="text-secondary">.</span></a>
         
         <!-- Mobile Menu Button -->
