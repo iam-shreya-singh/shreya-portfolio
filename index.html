@@ -243,10 +243,9 @@
     <!--Preloader animation -->
       <div id="preloader" class="fixed inset-0 bg-light dark:bg-dark z-[100] flex items-center justify-center">
         <!-- We will use a simple SVG spinner as a fallback, then replace it with 3D -->
-        <svg class="animate-spin h-12 w-12 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
+        <div id="preloader-3d-container" class="w-40 h-40">
+    <canvas id="preloader-canvas"></canvas>
+</div>
     </div>
     <!-- *** End of Preloader *** -->
 
@@ -724,10 +723,52 @@
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+    // --- 1. PRELOADER 3D SCENE ---
+    function initPreloaderScene() {
+        const preloaderContainer = document.getElementById('preloader-3d-container');
+        const preloaderCanvas = document.getElementById('preloader-canvas');
+        if (!preloaderContainer || !preloaderCanvas) return;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        camera.position.z = 3.5;
+
+        const renderer = new THREE.WebGLRenderer({ canvas: preloaderCanvas, alpha: true });
+        renderer.setSize(preloaderContainer.clientWidth, preloaderContainer.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const geometry = new THREE.IcosahedronGeometry(1.5, 0);
+        const material = new THREE.MeshBasicMaterial({ color: 0xf59e0b, wireframe: true }); // Using your primary Amber color
+        const preloaderCrystal = new THREE.Mesh(geometry, material);
+        
+        // Start the crystal scaled down to nothing
+        preloaderCrystal.scale.set(0, 0, 0);
+        scene.add(preloaderCrystal);
+
+        // Use GSAP for a cool "build-up" animation
+        gsap.to(preloaderCrystal.scale, {
+            duration: 1.5,
+            x: 1, y: 1, z: 1,
+            ease: "power2.out"
+        });
+
+        function animatePreloader() {
+            preloaderCrystal.rotation.y += 0.01;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animatePreloader);
+        }
+        animatePreloader();
+    }
+    // Run the preloader animation as soon as the script loads
+    initPreloaderScene();
+
+
+    // --- 2. HERO SECTION 3D SCENE (Your existing code) ---
     const container = document.getElementById('3d-container');
     const canvas = document.getElementById('3d-canvas');
 
     if (container && canvas) {
+        // ... (All of your existing, working code for the shimmering, mouse-tracking crystal goes here) ...
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
         camera.position.z = 3.5;
@@ -767,7 +808,6 @@
             requestAnimationFrame(animate);
             const elapsedTime = clock.getElapsedTime();
             
-            // Animate colors
             for (let i = 0; i < count; i++) {
                 const hue = (0.1 + (i / count + elapsedTime * 0.1) % 1);
                 color.setHSL(hue, 1.0, 0.5);
@@ -775,7 +815,6 @@
             }
             colors.needsUpdate = true;
 
-            // Animate rotation to follow mouse
             const targetRotationX = mouse.y * 0.5;
             const targetRotationY = mouse.x * 0.5;
             crystal.rotation.x += (targetRotationX - crystal.rotation.x) * 0.05;
@@ -792,6 +831,7 @@
             camera.updateProjectionMatrix();
         });
     }
+    
 </script>
       </body>
       </html>
