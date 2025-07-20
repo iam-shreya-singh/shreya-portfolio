@@ -2,34 +2,33 @@
 <html lang="en">
 <head> 
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    <!-- In your <head> section -->
-<title>Shreya Singh | Software Developer</title>
-<meta name="description" content="The portfolio of Shreya Singh, a creative full-stack developer building exceptional digital experiences.">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="YOUR_LIVE_URL_HERE"> <!-- fill this in after deploying -->
-<meta property="og:title" content="Shreya Singh | Software Developer">
-<meta property="og:description" content="A creative full-stack developer building exceptional digital experiences.">
-<meta property="og:image" content="https://github.com/iam-shreya-singh/shreya-portfolio/blob/main/assets/portfolio-preview.png?raw=true"> 
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="YOUR_LIVE_URL_HERE">
-<meta property="twitter:title" content="Shreya Singh | Software Developer">
-<meta property="twitter:description" content="A creative full-stack developer building digital experiences.">
-<meta property="twitter:image" content="https://github.com/iam-shreya-singh/shreya-portfolio/blob/main/assets/portfolio-preview.png?raw=true">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <head> section -->
     <title>Shreya Singh | Software Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Enhancement : GSAP Library implemnted -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <!-- Enhancement: Typed in hero section -->
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <!-- 3D 3js Library -->
-    <script type="importmap">
-    {
+    <meta name="description" content="The portfolio of Shreya Singh, a creative full-stack developer building exceptional digital experiences.">
+     <!-- Open Graph / Linkedin/ Facebook -->
+     <meta property="og:type" content="website">
+     <meta property="og:url" content="YOUR_LIVE_URL_HERE"> <!-- fill this in after deploying -->
+     <meta property="og:title" content="Shreya Singh | Software Developer">
+     <meta property="og:description" content="A creative full-stack developer building exceptional digital experiences.">
+     <meta property="og:image" content="https://github.com/iam-shreya-singh/shreya-portfolio/blob/main/assets/portfolio-preview.png?raw=true"> 
+
+     <!-- Twitter -->
+     <meta property="twitter:card" content="summary_large_image">
+     <meta property="twitter:url" content="YOUR_LIVE_URL_HERE">
+     <meta property="twitter:title" content="Shreya Singh | Software Developer">
+     <meta property="twitter:description" content="A creative full-stack developer building digital experiences.">
+     <meta property="twitter:image" content="https://github.com/iam-shreya-singh/shreya-portfolio/blob/main/assets/portfolio-preview.png?raw=true">
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Shreya Singh | Software Developer</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+     <!-- Enhancement : GSAP Library implemnted -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+     <!-- Enhancement: Typed in hero section -->
+     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+     <!-- 3D 3js Library -->
+     <script type="importmap">
+        {
         "imports": {
             "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
             "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
@@ -82,11 +81,11 @@
                 }
             }
         }
-    </script>
-    <style>
+     </script>
+     <style>
     /* CSS for the Mouse Follow Glow */
-#mouse-glow {
-    background: radial-gradient(
+     #mouse-glow {
+     background: radial-gradient(
         600px at var(--x) var(--y),
         rgba(99, 102, 241, 0.15), /* Your primary color with low opacity */
         transparent 80%
@@ -201,10 +200,38 @@
         .timeline-item:nth-child(odd) .timeline-content::after, .timeline-item:nth-child(even) .timeline-content::after { left: -15px; right: auto; border-width: 8px 16px 8px 0; border-color: transparent white transparent transparent; }
         .dark .timeline-item:nth-child(odd) .timeline-content::after, .dark .timeline-item:nth-child(even) .timeline-content::after { border-color: transparent #1f2937 transparent transparent; }
         .timeline-icon { left: 20px; }
-    }
-</style>
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans theme-transition">
+    }    
+        @media (max-width: 768px) {
+            .timeline-icon { left: 20px; }
+        }
+
+        /* --- CSS CATCH THE BUGS GAME STYLES --- */
+         
+        #game-board {
+            cursor: crosshair;
+        }
+        .game-object {
+            position: absolute;
+            font-size: 32px;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            user-select: none; /* Prevents text selection when clicking fast */
+        }
+        .game-object:hover {
+            transform: scale(1.2);
+        }
+        .bug {
+            color: #ef4444; /* Red */
+        }
+        .feature {
+            color: #22c55e; /* Green */
+        }
+        /* --- END OF GAME STYLES --- */
+
+       </style>
+      </head>
+
+    <body class="bg-gray-50 text-gray-800 font-sans theme-transition">
     <!-- ***Mouse Follow Glow Element *** -->
     <div id="mouse-glow" class="pointer-events-none fixed inset-0 z-30 transition duration-300"></div>
     <!-- Theme Toggle Button -->
@@ -322,7 +349,7 @@
         </div>
     </section>
     
-    <!-- *** RESUME SECTION (NOW FIXED) *** -->
+    <!-- *** RESUME SECTION *** -->
     <section id="resume" class="py-20 bg-white theme-transition">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -341,6 +368,31 @@
                     <!-- Timeline Block: Experience -->
                     <!-- Timeline Block: Education -->
         </div>
+    </section>
+
+    <!-- *** Catch the Bugs Game Section *** -->
+<section id="game" class="py-20 bg-gray-50 theme-transition">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Quick! Catch the Bugs!</h2>
+            <div class="w-24 h-1 bg-primary mx-auto"></div>
+            <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Click the bugs to score points, but avoid the clean code! Get the highest score in 30 seconds.</p>
+        </div>
+
+        <div id="bug-catcher-game" class="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-xl p-4 theme-transition" data-aos="zoom-in-up">
+            <!-- Game UI: Score and Timer -->
+            <div class="flex justify-between items-center mb-4 px-2">
+                <h3 class="text-lg font-bold">Score: <span id="score-display">0</span></h3>
+                <button id="start-game-btn" class="bg-primary text-white font-bold py-2 px-6 rounded-md hover:bg-secondary transition">Start</button>
+                <h3 class="text-lg font-bold">Time: <span id="timer-display">30</span>s</h3>
+            </div>
+
+            <!-- Game Board -->
+            <div id="game-board" class="w-full h-96 bg-gray-100 dark:bg-gray-900 rounded-md relative overflow-hidden border-2 border-gray-200 dark:border-gray-700">
+                <!-- Bugs and features will appear here -->
+            </div>
+        </div>
+    </div>
     </section>
 
     <!-- Skills Section -->
@@ -542,8 +594,9 @@
             }
         });
     });
+
     // --- GITHUB STATS FETCHER ---
-async function getGitHubStats() {
+    async function getGitHubStats() {
     const username = 'iam-shreya-singh';
     const userUrl = `https://api.github.com/users/${username}`;
     const reposUrl = `https://api.github.com/users/${username}/repos`;
@@ -606,7 +659,7 @@ timeline.to(icons, {
         timeline.reverse();
     });
 });    
-// --- TYPED.JS ROLODEX EFFECT for Head keep on changing tags---
+        // --- TYPED.JS ROLODEX EFFECT for Head keep on changing tags---
        document.addEventListener('DOMContentLoaded', function() {
         var options = {
         strings: [
@@ -637,7 +690,103 @@ timeline.to(icons, {
       glow.style.setProperty('--x', `${clientX}px`);
       glow.style.setProperty('--y', `${clientY}px`);
       });
-</script>
+
+       commandInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const firstCommandElement = commandList.querySelector('li');
+                if (firstCommandElement) {
+                    firstCommandElement.click();
+                }
+            }
+        });
+     
+        // --- CATCH THE BUGS GAME LOGIC ---
+document.addEventListener('DOMContentLoaded', () => {
+    const gameBoard = document.getElementById('game-board');
+    const scoreDisplay = document.getElementById('score-display');
+    const timerDisplay = document.getElementById('timer-display');
+    const startBtn = document.getElementById('start-game-btn');
+
+    let score = 0;
+    let timeLeft = 30;
+    let gameInterval = null;
+    let timerInterval = null;
+
+    function startGame() {
+        score = 0;
+        timeLeft = 30;
+        scoreDisplay.textContent = score;
+        timerDisplay.textContent = timeLeft;
+        startBtn.disabled = true;
+        startBtn.textContent = 'Go!';
+        
+        // Start the timer
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            timerDisplay.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                endGame();
+            }
+        }, 1000);
+
+        // Start spawning game objects
+        gameInterval = setInterval(spawnObject, 800); // Spawn an object every 800ms
+    }
+
+    function endGame() {
+        clearInterval(timerInterval);
+        clearInterval(gameInterval);
+        gameBoard.innerHTML = ''; // Clear the board
+        startBtn.disabled = false;
+        startBtn.textContent = 'Play Again?';
+        alert(`Game Over! Your final score is ${score}`);
+    }
+
+    function spawnObject() {
+        const obj = document.createElement('i');
+        obj.className = 'game-object fas';
+        
+        // 70% chance to be a bug, 30% chance to be a feature
+        const isBug = Math.random() < 0.7;
+        
+        if (isBug) {
+            obj.classList.add('fa-bug', 'bug');
+            obj.dataset.type = 'bug';
+        } else {
+            obj.classList.add('fa-check-circle', 'feature');
+            obj.dataset.type = 'feature';
+        }
+
+        // Random position within the board
+        const boardRect = gameBoard.getBoundingClientRect();
+        const x = Math.random() * (boardRect.width - 40);
+        const y = Math.random() * (boardRect.height - 40);
+        obj.style.left = `${x}px`;
+        obj.style.top = `${y}px`;
+
+        obj.addEventListener('click', handleObjectClick);
+        gameBoard.appendChild(obj);
+
+        // Remove the object after a short time
+        setTimeout(() => {
+            if (obj) obj.remove();
+        }, 2000); // Object stays for 2 seconds
+    }
+    
+    function handleObjectClick(e) {
+        const clickedObj = e.target;
+        if (clickedObj.dataset.type === 'bug') {
+            score += 10;
+        } else {
+            score -= 10;
+        }
+        scoreDisplay.textContent = score;
+        clickedObj.remove();
+    }
+
+    startBtn.addEventListener('click', startGame);
+});
+    </script>
 
    <script type="module">
     import * as THREE from 'three';
