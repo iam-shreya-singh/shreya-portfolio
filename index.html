@@ -231,7 +231,7 @@
        </style>
       </head>
 
-    <body class="bg-gray-50 text-gray-800 font-sans theme-transition">
+      <body class="bg-gray-50 text-gray-800 font-sans theme-transition">
     <!-- ***Mouse Follow Glow Element *** -->
     <div id="mouse-glow" class="pointer-events-none fixed inset-0 z-30 transition duration-300"></div>
     <!-- Theme Toggle Button -->
@@ -512,12 +512,37 @@
             <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"><p class="text-gray-400">© 2025 Shreya Singh. All rights reserved.</p><div class="flex space-x-4 mt-4 md:mt-0"><a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-linkedin-in"></i></a><a href="https://github.com/iam-shreya-singh" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-github"></i></a></div></div>
         </div>
     </footer>
-
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-   <script>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
     // Initialize AOS animations
     AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 100 });
-    
+     
+    // --- TYPED.JS ROLODEX EFFECT (MOVED HERE - FIX #1) ---
+        var options = {
+            strings: [
+                'Software Developer.',
+                'Full-Stack Engineer.',
+                'Problem Solver.',
+                'Creative Coder.',
+                'Proactive Learner.',
+                'Collaborative Team Player.',
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            startDelay: 500,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|',
+            autoInsertCss: true
+        };
+        // This safety check prevents errors if the element isn't on the page
+        if (document.getElementById('typed-text')) {
+            var typed = new Typed('#typed-text', options);
+        } 
+    });
     // Theme Toggle Functionality
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
@@ -658,28 +683,6 @@ timeline.to(icons, {
     card.addEventListener('mouseleave', () => {
         timeline.reverse();
     });
-});    
-        // --- TYPED.JS ROLODEX EFFECT for Head keep on changing tags---
-       document.addEventListener('DOMContentLoaded', function() {
-        var options = {
-        strings: [
-            'Software Developer.',
-            'Full-Stack Engineer.',
-            'Problem Solver.',
-            'Creative Coder.',
-            'Proactive Learner.',
-            'Collaborative Team Player.',
-        ],
-        typeSpeed: 50,  // Speed of typing
-        backSpeed: 30,  // Speed of deleting
-        backDelay: 2000, // Pause before deleting
-        startDelay: 500, // Pause before starting
-        loop: true,     // Loop forever
-        showCursor: true,
-        cursorChar: '|',
-        autoInsertCss: true // Let the library handle the cursor CSS
-    };
-    var typed = new Typed('#typed-text', options);
 });
         // --- MOUSE-FOLLOWING GRADIENT GLOW CSS var updated---
         const glow = document.getElementById('mouse-glow');
@@ -690,7 +693,7 @@ timeline.to(icons, {
       glow.style.setProperty('--x', `${clientX}px`);
       glow.style.setProperty('--y', `${clientY}px`);
       });
-
+/*
        commandInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 const firstCommandElement = commandList.querySelector('li');
@@ -699,93 +702,47 @@ timeline.to(icons, {
                 }
             }
         });
-     
+        */
+
         // --- CATCH THE BUGS GAME LOGIC ---
-document.addEventListener('DOMContentLoaded', () => {
-    const gameBoard = document.getElementById('game-board');
-    const scoreDisplay = document.getElementById('score-display');
-    const timerDisplay = document.getElementById('timer-display');
-    const startBtn = document.getElementById('start-game-btn');
+            const gameBoard = document.getElementById('game-board');
+            if (gameBoard) { // Safety check
+                const scoreDisplay = document.getElementById('score-display');
+                const timerDisplay = document.getElementById('timer-display');
+                const startBtn = document.getElementById('start-game-btn');
+                let score = 0, timeLeft = 30, gameInterval = null, timerInterval = null;
 
-    let score = 0;
-    let timeLeft = 30;
-    let gameInterval = null;
-    let timerInterval = null;
-
-    function startGame() {
-        score = 0;
-        timeLeft = 30;
-        scoreDisplay.textContent = score;
-        timerDisplay.textContent = timeLeft;
-        startBtn.disabled = true;
-        startBtn.textContent = 'Go!';
-        
-        // Start the timer
-        timerInterval = setInterval(() => {
-            timeLeft--;
-            timerDisplay.textContent = timeLeft;
-            if (timeLeft <= 0) {
-                endGame();
+                function startGame() {
+                    score = 0; timeLeft = 30; scoreDisplay.textContent = score; timerDisplay.textContent = timeLeft;
+                    startBtn.disabled = true; startBtn.textContent = 'Go!';
+                    timerInterval = setInterval(() => { timeLeft--; timerDisplay.textContent = timeLeft; if (timeLeft <= 0) endGame(); }, 1000);
+                    gameInterval = setInterval(spawnObject, 800);
+                }
+                function endGame() {
+                    clearInterval(timerInterval); clearInterval(gameInterval); gameBoard.innerHTML = '';
+                    startBtn.disabled = false; startBtn.textContent = 'Play Again?';
+                    alert(`Game Over! Your final score is ${score}`);
+                }
+                function spawnObject() {
+                    const obj = document.createElement('i'); obj.className = 'game-object fas';
+                    const isBug = Math.random() < 0.7;
+                    if (isBug) { obj.classList.add('fa-bug', 'bug'); obj.dataset.type = 'bug'; } 
+                    else { obj.classList.add('fa-check-circle', 'feature'); obj.dataset.type = 'feature'; }
+                    const boardRect = gameBoard.getBoundingClientRect();
+                    obj.style.left = `${Math.random()*(boardRect.width-40)}px`;
+                    obj.style.top = `${Math.random()*(boardRect.height-40)}px`;
+                    obj.addEventListener('click', handleObjectClick);
+                    gameBoard.appendChild(obj);
+                    setTimeout(() => { if (obj) obj.remove(); }, 2000);
+                }
+                function handleObjectClick(e) {
+                    const clickedObj = e.target;
+                    score += (clickedObj.dataset.type === 'bug' ? 10 : -10);
+                    scoreDisplay.textContent = score;
+                    clickedObj.remove();
+                }
+            startBtn.addEventListener('click', startGame);
             }
-        }, 1000);
-
-        // Start spawning game objects
-        gameInterval = setInterval(spawnObject, 800); // Spawn an object every 800ms
-    }
-
-    function endGame() {
-        clearInterval(timerInterval);
-        clearInterval(gameInterval);
-        gameBoard.innerHTML = ''; // Clear the board
-        startBtn.disabled = false;
-        startBtn.textContent = 'Play Again?';
-        alert(`Game Over! Your final score is ${score}`);
-    }
-
-    function spawnObject() {
-        const obj = document.createElement('i');
-        obj.className = 'game-object fas';
-        
-        // 70% chance to be a bug, 30% chance to be a feature
-        const isBug = Math.random() < 0.7;
-        
-        if (isBug) {
-            obj.classList.add('fa-bug', 'bug');
-            obj.dataset.type = 'bug';
-        } else {
-            obj.classList.add('fa-check-circle', 'feature');
-            obj.dataset.type = 'feature';
-        }
-
-        // Random position within the board
-        const boardRect = gameBoard.getBoundingClientRect();
-        const x = Math.random() * (boardRect.width - 40);
-        const y = Math.random() * (boardRect.height - 40);
-        obj.style.left = `${x}px`;
-        obj.style.top = `${y}px`;
-
-        obj.addEventListener('click', handleObjectClick);
-        gameBoard.appendChild(obj);
-
-        // Remove the object after a short time
-        setTimeout(() => {
-            if (obj) obj.remove();
-        }, 2000); // Object stays for 2 seconds
-    }
-    
-    function handleObjectClick(e) {
-        const clickedObj = e.target;
-        if (clickedObj.dataset.type === 'bug') {
-            score += 10;
-        } else {
-            score -= 10;
-        }
-        scoreDisplay.textContent = score;
-        clickedObj.remove();
-    }
-
-    startBtn.addEventListener('click', startGame);
-});
     </script>
 
    <script type="module">
@@ -861,3 +818,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 </script>
+      </body>
+      </html>
