@@ -3,10 +3,6 @@
 Hi, I'm Shreya, and welcome to my corner of the web. 
 This repository contains the complete source code for my personal portfolio, which you can view live at **[https://shreya-singh-dev.netlify.app/]**.
 
-## The Philosophy
-
-Like many developers, my best projects are always a work-in-progress. So, I asked myself: how can I prove what I can do *right now*? The answer was to treat my portfolio as its own showcase project.
-
 My goal was to build a site that *feels* alive—something that responds to you, surprises you, and maybe even makes you smile. It's a hands-on demonstration of my skills in creating dynamic and engaging web experiences from end to end.
 
 ## Features & Technologies
