@@ -1,4 +1,4 @@
-# Shreya Singh - This Portfolio is a Project
+# About this Portfolio (Read below...)
 
 Hi, I'm Shreya, and welcome to my corner of the web. 
 This repository contains the complete source code for my personal portfolio, which you can view live at **[https://shreya-singh-dev.netlify.app/]**.
