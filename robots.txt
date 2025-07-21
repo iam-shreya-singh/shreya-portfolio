@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shreya-singh-dev.netlify.app/sitemap.xml
