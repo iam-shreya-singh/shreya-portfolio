@@ -234,45 +234,15 @@
       #preloader.fade-out {
        opacity: 0;
        transition: opacity 0.5s ease-out;
-}           /* --- NEW: Tech Pill Animation Styles --- */
-        .tech-pill {
-            position: relative;
-            z-index: 1;
-            overflow: hidden; /* This is crucial to clip the pseudo-element */
-            transition: transform 0.3s ease; /* For the pop-up effect */
-        }
-
-        /* The revolving gradient border, created with a pseudo-element */
-        .tech-pill::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px;
-            width: calc(100% + 4px);
-            height: calc(100% + 4px);
-            background: conic-gradient(
-                from var(--angle), 
-                #f59e0b, /* Your primary amber */
-                #fbbf24, /* Your secondary lighter amber */
-                #fefce8, /* A very light yellow for a shimmer effect */
-                #fbbf24,
-                #f59e0b
-            );
-            z-index: -1;
-            border-radius: 9999px; /* This should match your pill's border-radius */
-            animation: revolve 4s linear infinite;
-        }
-
-        /* The hover effect to make the pill "pop" */
-        .tech-pill:hover {
-            transform: scale(1.08) translateY(-2px);
-            animation-play-state: paused; /* Optional: pauses the border spin on hover */
-        }
-
-        /* The keyframe animation for the revolving border */
-        @keyframes revolve {
-            0%   { --angle: 0deg; }
-            100% { --angle: 360deg; }
-        }
+}      
+ /* --- NEW: Tech Pill Animation --- */
+.tech-pill {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tech-pill:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
        </style>    <!--End of Main Style block-->
       </head>
        
