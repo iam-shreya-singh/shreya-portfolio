@@ -234,7 +234,45 @@
       #preloader.fade-out {
        opacity: 0;
        transition: opacity 0.5s ease-out;
-}   
+}           /* --- NEW: Tech Pill Animation Styles --- */
+        .tech-pill {
+            position: relative;
+            z-index: 1;
+            overflow: hidden; /* This is crucial to clip the pseudo-element */
+            transition: transform 0.3s ease; /* For the pop-up effect */
+        }
+
+        /* The revolving gradient border, created with a pseudo-element */
+        .tech-pill::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            background: conic-gradient(
+                from var(--angle), 
+                #f59e0b, /* Your primary amber */
+                #fbbf24, /* Your secondary lighter amber */
+                #fefce8, /* A very light yellow for a shimmer effect */
+                #fbbf24,
+                #f59e0b
+            );
+            z-index: -1;
+            border-radius: 9999px; /* This should match your pill's border-radius */
+            animation: revolve 4s linear infinite;
+        }
+
+        /* The hover effect to make the pill "pop" */
+        .tech-pill:hover {
+            transform: scale(1.08) translateY(-2px);
+            animation-play-state: paused; /* Optional: pauses the border spin on hover */
+        }
+
+        /* The keyframe animation for the revolving border */
+        @keyframes revolve {
+            0%   { --angle: 0deg; }
+            100% { --angle: 360deg; }
+        }
        </style>    <!--End of Main Style block-->
       </head>
        
@@ -424,8 +462,9 @@
             <div class="mt-16" data-aos="fade-up"><h3 class="text-xl font-bold mb-8 text-center glow-text">Tools & Technologies</h3><div class="flex flex-wrap justify-center gap-6"><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-git-alt text-4xl text-primary"></i></div><p>Git</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-docker text-4xl text-primary"></i></div><p>Docker</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-aws text-4xl text-primary"></i></div><p>AWS</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fas fa-server text-4xl text-primary"></i></div><p>Postman</p></div></div></div>
         </div>
     </section>
-<!-- Projects Section -->
-<section id="projects" class="py-20 bg-white theme-transition">
+
+ <!-- Projects Section -->
+      <section id="projects" class="py-20 bg-white theme-transition">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Projects</h2>
