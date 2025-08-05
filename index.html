@@ -43,6 +43,8 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- GLightbox Gallery CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -381,27 +383,31 @@
                 <div class="md:w-1/2 mb-10 md:mb-0">
                 <!-- The New Asymmetrical "Inspiration Grid" -->
 
-                <!-- The New Asymmetrical 6-Item Grid -->
+                   <!-- The New Clickable "Inspiration Grid" -->
 <div class="inspiration-grid">
-
-    <!-- Replace the src="..." with your actual file paths -->
 
     <!-- Item 1: Large Photo -->
     <div class="grid-item item-1">
-        <img src="assets/nature/photo-1.jpg" alt="A beautiful landscape">
+        <a href="assets/nature/photo-1-large.jpg" class="glightbox" data-gallery="nature-gallery">
+            <img src="assets/nature/photo-1.jpg" alt="A beautiful landscape">
+        </a>
     </div>
 
     <!-- Item 2: Small Photo -->
     <div class="grid-item item-2">
-        <img src="assets/nature/photo-2.jpg" alt="A close-up structure shot">
+        <a href="assets/nature/photo-2-large.jpg" class="glightbox" data-gallery="nature-gallery">
+            <img src="assets/nature/photo-2.jpg" alt="A close-up nature shot">
+        </a>
     </div>
     
     <!-- Item 3: Vertical Photo -->
     <div class="grid-item item-3">
-        <img src="assets/nature/photo-3.jpg" alt="A b&w rose view">
+        <a href="assets/nature/photo-3-large.jpg" class="glightbox" data-gallery="nature-gallery">
+            <img src="assets/nature/photo-3.jpg" alt="A vertical forest view">
+        </a>
     </div>
 
-    <!-- The Text Block -->
+    <!-- The Text Block (This item is NOT clickable) -->
     <div class="grid-item item-text">
         <i class="fas fa-leaf"></i>
         <p>"Outside the code, I find clarity and inspiration in nature."</p>
@@ -409,15 +415,26 @@
 
     <!-- Item 4: Small Photo -->
     <div class="grid-item item-4">
-        <img src="assets/nature/photo-4.jpg" alt="Another nature detail">
+        <a href="assets/nature/photo-4-large.jpg" class="glightbox" data-gallery="nature-gallery">
+            <img src="assets/nature/photo-4.jpg" alt="Another nature detail">
+        </a>
     </div>
+
     <!-- The Video Block -->
     <div class="grid-item item-video">
-        <video src="assets/nature/your-video.mp4" 
-               autoplay loop muted playsinline alt="Subtle nature video loop">
-        </video>
+        <a href="assets/nature/your-video.mp4" class="glightbox" data-gallery="nature-gallery">
+            <!-- The video tag is now just a silent, looping background for the clickable link -->
+            <video src="assets/nature/your-video.mp4" 
+                   autoplay loop muted playsinline alt="Subtle nature video loop">
+            </video>
+            <!-- Optional: Add a play icon overlay to show it's a video -->
+            <div class="video-overlay">
+                <i class="fas fa-play"></i>
+            </div>
+        </a>
     </div>
-</div>
+
+</div>             
                 </div>
                 <div class="md:w-1/2 md:pl-12">
                     <h3 class="text-2xl font-bold mb-4 glow-text">Who am I?</h3>
@@ -622,6 +639,8 @@
             <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"><p class="text-gray-400">© 2025 Shreya Singh. All rights reserved.</p><div class="flex space-x-4 mt-4 md:mt-0"><a href="https://linkedin.com/in/shreya-singh24" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-linkedin-in"></i></a><a href="https://github.com/iam-shreya-singh" target="_blank" class="text-gray-400 hover:text-primary transition"><i class="fab fa-github"></i></a></div></div>
         </div>
     </footer>
+    <!-- GLightbox Gallery JS -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     
     <!-- first script block-->
@@ -644,6 +663,8 @@
 });
 
     function initializePortfolioFeatures() {
+        // ---Initialize the Lightbox Gallery ---
+    const lightbox = GLightbox({ loop: true }); // 'loop: true' lets users cycle through all images
 
         // Initialize AOS animations
         AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 100 });
