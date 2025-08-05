@@ -85,6 +85,68 @@
      </script>
      <style> /* Main Style block started */
 
+       /*Grid layout for about me*/
+     /* --- REVISED: Expanded 6-Item Inspiration Grid --- */
+.inspiration-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr); /* We need more rows for this layout */
+    gap: 0.75rem; /* 12px */
+    width: 100%;
+    aspect-ratio: 4 / 3.5; /* Adjusted aspect ratio for the new layout */
+    max-height: 500px;
+}
+
+/* Base styles for all items - no changes here */
+.inspiration-grid > .grid-item {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.inspiration-grid > .grid-item:hover {
+    transform: scale(1.04);
+    box-shadow: 0 15px 35px rgba(30, 41, 59, 0.2);
+    z-index: 10;
+}
+.inspiration-grid img,
+.inspiration-grid video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- NEW positional classes for the 6-item layout --- */
+
+/* Main large photo (top-left) */
+.item-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+
+/* Small square photo (top-right) */
+.item-2 { grid-column: 3 / 4; grid-row: 1 / 2; }
+
+/* Vertical photo (left side) */
+.item-3 { grid-column: 1 / 2; grid-row: 3 / 5; }
+
+/* The text block (middle) */
+.item-text { 
+    grid-column: 2 / 3; grid-row: 3 / 4; 
+    /* Copied text styles from before */
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; padding: 1rem;
+    background-color: #f8fafc;
+}
+.dark .item-text { background-color: #1f2937; }
+.item-text p { font-size: 0.8rem; line-height: 1.4; font-style: italic; color: #475569; }
+.dark .item-text p { color: #9ca3af; }
+.item-text i { font-size: 1.25rem; margin-bottom: 0.5rem; color: #f59e0b; }
+
+/* Small photo next to text */
+.item-4 { grid-column: 2 / 3; grid-row: 4 / 5; }
+
+/* The video (right side) */
+.item-video { grid-column: 3 / 4; grid-row: 2 / 5; }
+
     /* CSS for the Mouse Follow Glow */
      #mouse-glow {
      background: radial-gradient(
@@ -316,7 +378,47 @@
         <div class="container mx-auto px-6">
             <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">About Me</h2><div class="w-24 h-1 bg-primary mx-auto"></div></div>
             <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="About Shreya" class="rounded-lg shadow-xl glow-border"></div>
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                <!-- The New Asymmetrical "Inspiration Grid" -->
+
+                <!-- The New Asymmetrical 6-Item Grid -->
+<div class="inspiration-grid">
+
+    <!-- Replace the src="..." with your actual file paths -->
+
+    <!-- Item 1: Large Photo -->
+    <div class="grid-item item-1">
+        <img src="assets/nature/photo-1.jpg" alt="A beautiful landscape">
+    </div>
+
+    <!-- Item 2: Small Photo -->
+    <div class="grid-item item-2">
+        <img src="assets/nature/photo-2.jpg" alt="A close-up structure shot">
+    </div>
+    
+    <!-- Item 3: Vertical Photo -->
+    <div class="grid-item item-3">
+        <img src="assets/nature/photo-3.jpg" alt="A b&w rose view">
+    </div>
+
+    <!-- The Text Block -->
+    <div class="grid-item item-text">
+        <i class="fas fa-leaf"></i>
+        <p>"Outside the code, I find clarity and inspiration in nature."</p>
+    </div>
+
+    <!-- Item 4: Small Photo -->
+    <div class="grid-item item-4">
+        <img src="assets/nature/photo-4.jpg" alt="Another nature detail">
+    </div>
+    <!-- The Video Block -->
+    <div class="grid-item item-video">
+        <video src="assets/nature/your-video.mp4" 
+               autoplay loop muted playsinline alt="Subtle nature video loop">
+        </video>
+    </div>
+</div>
+                </div>
                 <div class="md:w-1/2 md:pl-12">
                     <h3 class="text-2xl font-bold mb-4 glow-text">Who am I?</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">Hi! I'm Shreya, a software developer, learning by doing. I love designing systems, fixing bugs that make me think twice, and building tech that feels thoughtful and human. This space is where I build, break, learn, and grow — in public.</p>
