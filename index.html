@@ -424,42 +424,37 @@
             <div class="mt-16" data-aos="fade-up"><h3 class="text-xl font-bold mb-8 text-center glow-text">Tools & Technologies</h3><div class="flex flex-wrap justify-center gap-6"><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-git-alt text-4xl text-primary"></i></div><p>Git</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-docker text-4xl text-primary"></i></div><p>Docker</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fab fa-aws text-4xl text-primary"></i></div><p>AWS</p></div><div class="text-center"><div class="bg-white p-6 rounded-lg shadow-md w-24 h-24 flex items-center justify-center mx-auto mb-4 glow-border"><i class="fas fa-server text-4xl text-primary"></i></div><p>Postman</p></div></div></div>
         </div>
     </section>
-
-     <!-- Projects Section -->
+<!-- Projects Section -->
 <section id="projects" class="py-20 bg-white theme-transition">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Projects</h2>
             <div class="w-24 h-1 bg-primary mx-auto"></div>
-            <!-- I've updated the subtitle to no longer mention hovering -->
             <p class="text-gray-600 mt-4 max-w-2xl mx-auto">A selection of my recent work and the technologies used.</p>
         </div>
 
-        <!-- This is the container for all your project cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-center">
 
             <!-- Project 1: RepoFinder -->
             <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                <div class="relative group"> <!-- Used group-hover for the overlay -->
-                    <!-- Image and Link Overlay -->
+                <div class="relative group">
                     <img src="assets/repofinder.png" alt="RepoFinder Project Screenshot" class="w-full h-56 object-cover">
                     <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <a href="https://github-random-repo-ten.vercel.app/" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">Live Demo</a>
                         <a href="https://github.com/iam-shreya-singh/github-random-repo" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a>
                     </div>
                 </div>
-                <div class="p-6 flex flex-col flex-grow"> <!-- flex-grow makes this section fill available space -->
+                <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-bold mb-2 glow-text">RepoFinder: A GitHub Discovery Engine</h3>
                     <p class="text-gray-600 mb-4 flex-grow">A dynamic engine for searching GitHub users and repositories, built with React and featuring a seamless CI/CD pipeline on Vercel.</p>
                     
-                    <!-- START OF CHANGES: Replaced the old icon div with this new "pills" div -->
-                    <div class="flex flex-wrap gap-2 mt-auto pt-4"> <!-- mt-auto pushes this to the bottom -->
-                        <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">React</span>
-                        <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">CSS3</span>
-                        <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">REST API</span>
-                        <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">Vercel</span>
+                    <div class="flex flex-wrap gap-2 mt-auto pt-4">
+                        <!-- Each span now has the "tech-pill" class -->
+                        <span class="tech-pill bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">React</span>
+                        <span class="tech-pill bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">CSS3</span>
+                        <span class="tech-pill bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">REST API</span>
+                        <span class="tech-pill bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">Vercel</span>
                     </div>
-                    <!-- END OF CHANGES -->
                 </div>
             </div>
 
@@ -468,7 +463,6 @@
         </div>
     </div>
 </section>
-
     <!-- Contact Section / form section -->
     <section id="contact" class="py-20 bg-gray-50 theme-transition">
         <div class="container mx-auto px-6">
