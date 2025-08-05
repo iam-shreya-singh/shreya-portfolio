@@ -86,8 +86,28 @@
         }
      </script>
      <style> /* Main Style block started */
+     /* --- CSS for GLightbox Video Overlay --- */
+.item-video .video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.item-video:hover .video-overlay {
+    opacity: 1;
+}
+.video-overlay i {
+    color: white;
+    font-size: 2rem; /* 32px */
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 
        /*Grid layout for about me*/
+
      /* --- REVISED: Expanded 6-Item Inspiration Grid --- */
 .inspiration-grid {
     display: grid;
