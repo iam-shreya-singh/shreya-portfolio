@@ -425,49 +425,30 @@
         </div>
     </section>
 
-     <!-- Projects Section -->
-     <section id="projects" class="py-20 bg-white theme-transition">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">My Projects</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">A selection of my recent work. Hover over a card to see the tech stack!</p>
-            </div>
-
-            <!-- This is the container for all your project cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-center">
-
-                <!-- Project 1: RepoFinder -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative">
-                        <!-- IMPORTANT: Replace with your actual image path -->
-                        <img src="assets/repofinder.png" alt="RepoFinder Project Screenshot" class="w-full h-56 object-cover">
-                        <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 project-overlay transition-opacity duration-300">
-                            <!-- IMPORTANT: Replace with your actual Live Demo URL -->
-                            <a href="https://github-random-repo-ten.vercel.app/" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">Live Demo</a>
-                            <!-- IMPORTANT: Replace with your actual GitHub URL -->
-                            <a href="https://github.com/iam-shreya-singh/github-random-repo" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a>
-                        </div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-bold mb-2 glow-text">RepoFinder: A GitHub Discovery Engine</h3>
-                        <p class="text-gray-600 mb-4">A dynamic engine for searching GitHub users and repositories, built with React and featuring a seamless CI/CD pipeline on Vercel.</p>
-                        
-                        <!-- Tech Stack Icons (These will animate on hover) -->
-                        <div class="tech-stack-icons absolute bottom-6 right-6 flex items-center space-x-4">
-                            <i class="fab fa-react text-2xl text-primary tech-icon" title="React"></i>
-                            <i class="fab fa-css3-alt text-2xl text-primary tech-icon" title="CSS3"></i>
-                            <i class="fas fa-server text-2xl text-primary tech-icon" title="REST API"></i>
-                            <i class="fas fa-rocket text-2xl text-primary tech-icon" title="Vercel Deployment"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- To add another project, copy the entire block above and paste it here -->
-
-            </div>
+    <!-- Project 1: RepoFinder (with new Tech Pills) -->
+<div class="project-card bg-white rounded-xl overflow-hidden shadow-lg glow-border theme-transition" data-aos="fade-up" data-aos-delay="100">
+    <div class="relative group">
+        <!-- Image and Link Overlay -->
+        <img src="assets/repofinder.png" alt="RepoFinder Project Screenshot" class="w-full h-56 object-cover">
+        <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <a href="YOUR_LIVE_DEMO_URL" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">Live Demo</a>
+            <a href="YOUR_GITHUB_URL" target="_blank" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">View on GitHub</a>
         </div>
-    </section>
+    </div>
+    <div class="p-6">
+        <h3 class="text-xl font-bold mb-2 glow-text">RepoFinder: A GitHub Discovery Engine</h3>
+        <p class="text-gray-600 mb-4">A dynamic engine for searching GitHub users and repositories, built with React and featuring a seamless CI/CD pipeline on Vercel.</p>
+        
+        <!-- NEW: Tech Pills Section -->
+        <div class="flex flex-wrap gap-2 mt-4">
+            <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">React</span>
+            <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">Framer Motion</span>
+            <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">CSS3</span>
+            <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">REST API</span>
+            <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">Vercel</span>
+        </div>
+    </div>
+</div>
 
     <!-- Contact Section / form section -->
     <section id="contact" class="py-20 bg-gray-50 theme-transition">
